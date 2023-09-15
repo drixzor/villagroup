@@ -76,7 +76,7 @@
         document.querySelector(".villa-id").textContent = `Villa ${id}`;
         document.querySelector(".property-id").textContent = `${propertyId}`;
                     document.querySelector(".status").textContent = `Status: ${status}`;
-                    document.querySelector(".guest-number").textContent = `Up to ${maximumOccupancyGuests} Guests`;
+                    document.querySelector(".guest-number").textContent = `Up to ${maximumOccupancyGuests} Guestsss`;
                     document.querySelector(".bed-number").textContent = `${bedrooms} Bedrooms`;
                     document.querySelector(".address-line").textContent = `Address Line: ${addressLine}`;
                     document.querySelector(".villa-city").textContent = `${city}`;
