@@ -215,37 +215,35 @@ function createCategoryBlock(category, amenities) {
     const featureBlock = document.createElement("div");
     featureBlock.classList.add("feature-block");
 
-    const amenityCategory = document.createElement("div");
+    const featureImage = document.createElement("img");
+    featureImage.classList.add("feature-image");
+    // Set the image source URL based on the category (you can customize this part)
+    featureImage.src = getImageSourceForCategory(category);
+    featureImage.alt = ""; // Add alt text as needed
+
+    const amenityCategory = document.createElement("h6");
     amenityCategory.classList.add("amenity-category");
     amenityCategory.textContent = categoryMappings[category] || category;
 
-    const amenityText = document.createElement("div");
+    featureBlock.appendChild(featureImage);
+    featureBlock.appendChild(amenityCategory);
+
+    const amenityText = document.createElement("p");
     amenityText.classList.add("amenity-text");
     amenityText.textContent = amenities.join(', ');
 
-    featureBlock.appendChild(amenityCategory);
     categoryBlock.appendChild(featureBlock);
     categoryBlock.appendChild(amenityText);
 
     return categoryBlock;
 }
 
-// Function to group amenities by category
-function groupAmenitiesByCategory(amenities) {
-    const amenityCategories = {};
-
-    const amenityCodes = amenities.split(',').map(code => code.trim());
-    const amenityDescriptions = amenityCodes.map(code => amenityMappings[code] || code);
-
-    amenityDescriptions.forEach(description => {
-        const [category, amenity] = description.split(' - ');
-        if (category && amenity) {
-            if (!amenityCategories[category]) {
-                amenityCategories[category] = [];
-            }
-            amenityCategories[category].push(amenity);
-        }
-    });
-
-    return amenityCategories;
+// Function to determine the image source based on the category (customize as needed)
+function getImageSourceForCategory(category) {
+    // You can customize this to map each category to the corresponding image source
+    const categoryToImage = {
+        "Pool": "https://assets.website-files.com/64c37e33e743d0c2d6b3fead/64cd05acb53b9ed560fd06e8_swimming-pool.png",
+        // Add more category-image mappings as needed
+    };
+    return categoryToImage[category] || defaultImageSource; // Use a default image source if no match is found
 }
