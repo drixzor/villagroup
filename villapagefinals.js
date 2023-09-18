@@ -21,7 +21,7 @@ const amenityMappings = {
 // Function to convert amenity codes to text descriptions
 function convertAmenitiesToString(amenities) {
     if (!amenities) {
-        return "No amenities available"; // Handle the case when amenities are null or undefined
+        return "No amenities available"; // Handle the case when amenities is null or undefined
     }
     const amenityCodes = amenities.split(',').map(code => code.trim());
     const amenityDescriptions = amenityCodes.map(code => amenityMappings[code] || code); // Use the mapping or the code itself if not found
