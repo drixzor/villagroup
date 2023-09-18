@@ -18,6 +18,19 @@ const amenityMappings = {
     POOL_SPA_HEATED_POOL: "Heated Pool"
 };
 
+// Create a mapping object for category codes to category names
+const categoryMappings = {
+    LOCATION_TYPE: "Location Type",
+    SPORTS: "Sports",
+    ATTRACTIONS: "Attractions",
+    LEISURE: "Leisure",
+    AMENITIES: "Amenities",
+    KITCHEN_DINING: "Kitchen & Dining",
+    OUTDOOR: "Outdoor",
+    POOL_SPA: "Pool & Spa"
+    // Add more categories as needed
+};
+
 // Function to convert amenity codes to text descriptions
 function convertAmenitiesToString(amenities) {
     if (!amenities) {
@@ -28,7 +41,7 @@ function convertAmenitiesToString(amenities) {
     return amenityDescriptions.join(', ');
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const url = new URL(window.location.href);
     const propertyId = url.searchParams.get("id");
     fetchPropertyData(propertyId);
@@ -129,14 +142,21 @@ function populatePropertyDetails(property) {
     if (amenities) {
         // Use the convertAmenitiesToString function to display amenities
         const amenitiesString = convertAmenitiesToString(amenities);
+        // Update the ".amenities" element with the amenities string
         document.querySelector(".amenities").textContent = `Amenities: ${amenitiesString}`;
 
         // Create HTML blocks for each category of amenities
-        const amenityCategories = createAmenityCategories(amenities);
+        const amenityCategories = groupAmenitiesByCategory(amenities);
         const amenityContainer = document.querySelector(".amenity-container");
-        amenityCategories.forEach(category => {
-            amenityContainer.appendChild(category);
-        });
+
+        // Clear existing content in the amenity container
+        amenityContainer.innerHTML = "";
+
+        // Append the category blocks to the amenity container
+        for (const category in amenityCategories) {
+            const categoryBlock = createCategoryBlock(category, amenityCategories[category]);
+            amenityContainer.appendChild(categoryBlock);
+        }
     }
 
     document.querySelector(".property-type").textContent = `Property Type: ${propertyType}`;
@@ -153,7 +173,7 @@ function populatePropertyDetails(property) {
         imageElement.className = `mosaic-image column-${(index % 3) + 1}`;
         imageElement.style.backgroundImage = `url('${image.trim()}')`;
         mosaicContainer.appendChild(imageElement);
-        imageElement.addEventListener('click', function() { openLightbox(index); });
+        imageElement.addEventListener('click', function () { openLightbox(index); });
     });
 
     // Setup Lightbox
@@ -188,23 +208,35 @@ function populatePropertyDetails(property) {
 }
 
 // Function to create HTML blocks for amenity categories
-function createAmenityCategories(amenities) {
-    const categoryMappings = {
-        LOCATION_TYPE: "Location Type",
-        SPORTS: "Sports",
-        ATTRACTIONS: "Attractions",
-        LEISURE: "Leisure",
-        AMENITIES: "Amenities",
-        KITCHEN_DINING: "Kitchen & Dining",
-        OUTDOOR: "Outdoor",
-        POOL_SPA: "Pool & Spa",
-        // Add more categories as needed
-    };
+function createCategoryBlock(category, amenities) {
+    const categoryBlock = document.createElement("div");
+    categoryBlock.classList.add("amenity-block");
+
+    const featureBlock = document.createElement("div");
+    featureBlock.classList.add("feature-block");
+
+    const amenityCategory = document.createElement("div");
+    amenityCategory.classList.add("amenity-category");
+    amenityCategory.textContent = categoryMappings[category] || category;
+
+    const amenityText = document.createElement("div");
+    amenityText.classList.add("amenity-text");
+    amenityText.textContent = amenities.join(', ');
+
+    featureBlock.appendChild(amenityCategory);
+    categoryBlock.appendChild(featureBlock);
+    categoryBlock.appendChild(amenityText);
+
+    return categoryBlock;
+}
+
+// Function to group amenities by category
+function groupAmenitiesByCategory(amenities) {
+    const amenityCategories = {};
 
     const amenityCodes = amenities.split(',').map(code => code.trim());
     const amenityDescriptions = amenityCodes.map(code => amenityMappings[code] || code);
 
-    const amenityCategories = {};
     amenityDescriptions.forEach(description => {
         const [category, amenity] = description.split(' - ');
         if (category && amenity) {
@@ -215,29 +247,5 @@ function createAmenityCategories(amenities) {
         }
     });
 
-    const categoryBlocks = [];
-    for (const category in amenityCategories) {
-        const categoryAmenities = amenityCategories[category].join(', ');
-        const categoryBlock = document.createElement("div");
-        categoryBlock.classList.add("amenity-block");
-
-        const featureBlock = document.createElement("div");
-        featureBlock.classList.add("feature-block");
-
-        const amenityCategory = document.createElement("div");
-        amenityCategory.classList.add("amenity-category");
-        amenityCategory.textContent = categoryMappings[category] || category;
-
-        const amenityText = document.createElement("div");
-        amenityText.classList.add("amenity-text");
-        amenityText.textContent = categoryAmenities;
-
-        featureBlock.appendChild(amenityCategory);
-        categoryBlock.appendChild(featureBlock);
-        categoryBlock.appendChild(amenityText);
-
-        categoryBlocks.push(categoryBlock);
-    }
-
-    return categoryBlocks;
+    return amenityCategories;
 }
