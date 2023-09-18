@@ -18,15 +18,6 @@
         POOL_SPA_HEATED_POOL: "Heated Pool"
     };
 
-    // Function to convert amenity codes to text descriptions
-    function convertAmenitiesToString(amenities) {
-        if (!amenities) {
-            return "No amenities available"; // Handle the case when amenities is null or undefined
-        }
-        const amenityCodes = amenities.split(',').map(code => code.trim());
-        const amenityDescriptions = amenityCodes.map(code => amenityMappings[code] || code); // Use the mapping or the code itself if not found
-        return amenityDescriptions.join(', ');
-    }
 
     document.addEventListener("DOMContentLoaded", function() {
         const url = new URL(window.location.href);
