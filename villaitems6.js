@@ -66,7 +66,6 @@
             changeover,
             images,
             amenities,
-            propertyType,
             accommodationsSummary
         } = property;
 
@@ -100,7 +99,6 @@
 
         }
         
-        document.querySelector(".property-type").textContent = `Property Type: ${propertyType}`;
         document.querySelector(".accommodations-summary").textContent = `Accommodations Summary: ${accommodationsSummary}`;
         document.querySelector(".data-map-lat").textContent = `${latitude}`;
         document.querySelector(".data-map-lon").textContent = `${longitude}`;
