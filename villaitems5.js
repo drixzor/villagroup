@@ -146,4 +146,3 @@
             if (newIndex < 0) newIndex = imagesArray.length - 1;
             lightboxImage.src = imagesArray[newIndex].trim();
         }
-    }
