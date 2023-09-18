@@ -38,7 +38,7 @@
         const apiUrl = "https://spapi.weboscy.com/property?id="+propertyId;
 
         try {
-            const matchingProperty = await fetchData(url);
+            const matchingProperty = await fetchData(apiUrl);
             
             if (matchingProperty) {
                 populatePropertyDetails(matchingProperty);
