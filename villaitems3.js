@@ -1,22 +1,4 @@
-    // Create a mapping object for amenity codes to descriptions
-    const amenityMappings = {
-        LOCATION_TYPE_RESORT: "Resort Location",
-        SPORTS_GOLF: "Golf",
-        ATTRACTIONS_HEALTH_BEAUTY_SPA: "Health & Beauty Spa",
-        LEISURE_HORSEBACK_RIDING: "Horseback Riding",
-        ATTRACTIONS_WATER_PARKS: "Water Parks",
-        SPORTS_SWIMMING: "Swimming",
-        AMENITIES_HAIR_DRYER: "Hair Dryer",
-        AMENITIES_INTERNET: "Internet",
-        AMENITIES_AIR_CONDITIONING: "Air Conditioning",
-        AMENITIES_IRON_BOARD: "Iron & Ironing Board",
-        KITCHEN_DINING_MICROWAVE: "Microwave",
-        KITCHEN_DINING_AREA: "Dining Area",
-        OUTDOOR_BALCONY: "Balcony",
-        AMENITIES_PARKING: "Parking",
-        OUTDOOR_DECK_PATIO_UNCOVERED: "Uncovered Deck/Patio",
-        POOL_SPA_HEATED_POOL: "Heated Pool"
-    };
+
 
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -115,11 +97,7 @@
         document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
         document.querySelector(".images").textContent = `Images: ${images}`;
         console.log('test', property);
-        // Check if amenities is not null or undefined before splitting
-        if (amenities) {
-            // Use the convertAmenitiesToString function to display amenities
-            const amenitiesString = convertAmenitiesToString(amenities);
-            document.querySelector(".amenities").textContent = `Amenities: ${amenitiesString}`;
+
         }
         
         document.querySelector(".property-type").textContent = `Property Type: ${propertyType}`;
