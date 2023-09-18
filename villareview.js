@@ -12,18 +12,8 @@ $(document).ready(function() {
   }
 
   // Extract the dynamic ID from the URL and parse it as an integer
-  var dynamicId = parseInt(getUrlParameter('id'));
+  var propertyId = parseInt(getUrlParameter('id'));
 
-  // Fetch JSON data from the first endpoint to find the propertyId
-  $.getJSON('https://spapi.weboscy.com/properties', function(propertiesData) {
-    // Find the propertyId based on the dynamicId
-    var propertyId = null;
-    for (var i = 0; i < propertiesData.length; i++) {
-      if (propertiesData[i].id === dynamicId) {
-        propertyId = propertiesData[i].propertyId;
-        break;
-      }
-    }
 
     // If propertyId is found, fetch and display reviews
     if (propertyId !== null) {
@@ -86,5 +76,4 @@ $(document).ready(function() {
       // Handle the case where propertyId is not found
       $(".reviews-grid").html("Property not found.");
     }
-  });
 });
