@@ -128,7 +128,7 @@
         if (amenities) {
             // Use the convertAmenitiesToString function to display amenities
             const amenitiesString = convertAmenitiesToString(amenities);
-            document.querySelector(".amenities").textContent = `Amenities: ${amenitiesString}`;
+            document.querySelector(".amenities").textContent = `${amenitiesString}`;
         }
         
         document.querySelector(".property-type").textContent = `Property Type: ${propertyType}`;
