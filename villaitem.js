@@ -35,15 +35,11 @@
     });
 
     async function fetchPropertyData(propertyId) {
-        const apiUrl = "https://spapi.weboscy.com/properties";
-        const url = new URL(apiUrl);
-        const params = { id: propertyId };
-        url.search = new URLSearchParams(params).toString();
+        const apiUrl = "https://spapi.weboscy.com/property?id="+propertyId;
 
         try {
-            const data = await fetchData(url);
-            const matchingProperty = data.find(property => property.id === parseInt(propertyId));
-
+            const matchingProperty = await fetchData(url);
+            
             if (matchingProperty) {
                 populatePropertyDetails(matchingProperty);
                 // Update the data-calendar-property-id attribute with property ID for the widget
@@ -127,7 +123,7 @@
         document.querySelector(".villa-description").innerHTML = `${accommodationsSummary}`;
         document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
         document.querySelector(".images").textContent = `Images: ${images}`;
-        console.log('test', amenities);
+        console.log('test', property);
         // Check if amenities is not null or undefined before splitting
         if (amenities) {
             // Use the convertAmenitiesToString function to display amenities
