@@ -178,3 +178,4 @@
             lightboxImage.src = imagesArray[newIndex].trim();
         }
     }
+}
