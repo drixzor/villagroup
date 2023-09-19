@@ -1,157 +1,205 @@
 // Create a mapping object for amenity codes to descriptions
         const amenityMappings = {
-    LOCATION_TYPE_RESORT: {
-        description: "Resort Location",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    SPORTS_GOLF: {
-        description: "Golf",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    ATTRACTIONS_HEALTH_BEAUTY_SPA: {
-        description: "Health & Beauty Spa",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    LEISURE_HORSEBACK_RIDING: {
-        description: "Horseback Riding",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    ATTRACTIONS_WATER_PARKS: {
-        description: "Water Parks",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    SPORTS_SWIMMING: {
-        description: "Swimming",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    AMENITIES_HAIR_DRYER: {
-        description: "Hair Dryer",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    AMENITIES_INTERNET: {
-        description: "Internet",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    AMENITIES_AIR_CONDITIONING: {
-        description: "Air Conditioning",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    AMENITIES_IRON_BOARD: {
-        description: "Iron & Ironing Board",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    KITCHEN_DINING_MICROWAVE: {
-        description: "Microwave",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    KITCHEN_DINING_AREA: {
-        description: "Dining Area",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    OUTDOOR_BALCONY: {
-        description: "Balcony",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    AMENITIES_PARKING: {
-        description: "Parking",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    OUTDOOR_DECK_PATIO_UNCOVERED: {
-        description: "Uncovered Deck/Patio",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    POOL_SPA_HEATED_POOL: {
-        description: "Heated Pool",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    LOCATION_TYPE_OCEAN_VIEW: {
-        description: "Ocean View",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    LOCATION_TYPE_BEACH: {
-        description: "Beach",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    LOCATION_TYPE_WATERFRONT: {
-        description: "Waterfront",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    THEMES_FAMILY: {
-        description: "Family Themes",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    SPORTS_SNORKELING: {
-        description: "Snorkeling",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    SPORTS_CYCLING: {
-        description: "Cycling",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    SPORTS_SCUBA_OR_SNORKELING: {
-        description: "Scuba or Snorkeling",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    SPORTS_FISHING: {
-        description: "Fishing",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    LOCATION_TYPE_MOUNTAIN: {
-        description: "Mountain",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    LOCATION_TYPE_VILLAGE: {
-        description: "Village",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    SPORTS_MOUNTAIN_BIKING: {
-        description: "Mountain Biking",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    ATTRACTIONS_MUSEUMS: {
-        description: "Museums",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    KITCHEN_DINING_ROOM: {
-        description: "Room (Kitchen & Dining)",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    ENTERTAINMENT_POOL_TABLE: {
-        description: "Pool Table (Entertainment)",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    ENTERTAINMENT_GAMES: {
-        description: "Games (Entertainment)",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    AMENITIES_GARAGE: {
-        description: "Garage",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    AMENITIES_DRYER: {
-        description: "Dryer",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    ENTERTAINMENT_PING_PONG_TABLE: {
-        description: "Ping Pong Table (Entertainment)",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    ACCOMMODATIONS_HOUSE_CLEANING_INCLUDED: {
-        description: "House Cleaning Included",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    ENTERTAINMENT_VIDEO_LIBRARY: {
-        description: "Video Library (Entertainment)",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    AMENITIES_HEATING: {
-        description: "Heating",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
-    LEISURE_SHOPPING: {
-        description: "Shopping",
-        imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cb9ffea725b757be79bb87_oven.png",
-    },
+  LOCATION_TYPE_RESORT: {
+    description: "Resort Location",
+    imageUrl: "URL for Resort Location",
+  },
+  SPORTS_GOLF: {
+    description: "Golf",
+    imageUrl: "URL for Golf",
+  },
+  ATTRACTIONS_HEALTH_BEAUTY_SPA: {
+    description: "Health & Beauty Spa",
+    imageUrl: "URL for Health & Beauty Spa",
+  },
+  LEISURE_HORSEBACK_RIDING: {
+    description: "Horseback Riding",
+    imageUrl: "URL for Horseback Riding",
+  },
+  ATTRACTIONS_WATER_PARKS: {
+    description: "Water Parks",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65098da2ee29e6509a1cfedc_Asset%20201.png",
+  },
+  SPORTS_SWIMMING: {
+    description: "Swimming",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65098da27560cbe2509543e1_Asset%20204.png",
+  },
+  AMENITIES_HAIR_DRYER: {
+    description: "Hair Dryer",
+    imageUrl: "URL for Hair Dryer",
+  },
+  AMENITIES_INTERNET: {
+    description: "Internet",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65098d1a37c76b9ec2c0ccd4_Asset%2010.png",
+  },
+  AMENITIES_AIR_CONDITIONING: {
+    description: "Air Conditioning",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64cd06173345baa622eaa0ef_air-conditioning.png",
+  },
+  AMENITIES_IRON_BOARD: {
+    description: "Iron & Ironing Board",
+    imageUrl: "URL for Iron & Ironing Board",
+  },
+  KITCHEN_DINING_MICROWAVE: {
+    description: "Microwave",
+    imageUrl: "URL for Microwave",
+  },
+  KITCHEN_DINING_AREA: {
+    description: "Dining Area",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/64d1079964df468032915be7_chair.png",
+  },
+  OUTDOOR_BALCONY: {
+    description: "Balcony",
+    imageUrl: "URL for Balcony",
+  },
+  AMENITIES_PARKING: {
+    description: "Parking",
+    imageUrl: "URL for Parking",
+  },
+  OUTDOOR_DECK_PATIO_UNCOVERED: {
+    description: "Uncovered Deck/Patio",
+    imageUrl: "URL for Uncovered Deck/Patio",
+  },
+  POOL_SPA_HEATED_POOL: {
+    description: "Heated Pool",
+    imageUrl: "URL for Heated Pool",
+  },
+  LOCATION_TYPE_OCEAN_VIEW: {
+    description: "Ocean View",
+    imageUrl: "URL for Ocean View",
+  },
+  LOCATION_TYPE_BEACH: {
+    description: "Beach",
+    imageUrl: "URL for Beach",
+  },
+  LOCATION_TYPE_WATERFRONT: {
+    description: "Waterfront",
+    imageUrl: "URL for Waterfront",
+  },
+  THEMES_FAMILY: {
+    description: "Family Themes",
+    imageUrl: "URL for Family Themes",
+  },
+  SPORTS_SNORKELING: {
+    description: "Snorkeling",
+    imageUrl: "URL for Snorkeling",
+  },
+  SPORTS_CYCLING: {
+    description: "Cycling",
+    imageUrl: "URL for Cycling",
+  },
+  SPORTS_SCUBA_OR_SNORKELING: {
+    description: "Scuba or Snorkeling",
+    imageUrl: "URL for Scuba or Snorkeling",
+  },
+  SPORTS_FISHING: {
+    description: "Fishing",
+    imageUrl: "URL for Fishing",
+  },
+  LEISURE_WATER_SPORTS: {
+    description: "Water Sports",
+    imageUrl: "URL for Water Sports",
+  },
+  AMENITIES_FIREPLACE: {
+    description: "Fireplace",
+    imageUrl: "URL for Fireplace",
+  },
+  POOL_SPA_SAUNA: {
+    description: "Pool & Spa (Sauna)",
+    imageUrl: "URL for Pool & Spa (Sauna)",
+  },
+  KITCHEN_DINING_REFRIGERATOR: {
+    description: "Refrigerator (Kitchen & Dining)",
+    imageUrl: "URL for Refrigerator (Kitchen & Dining)",
+  },
+  KITCHEN_DINING_DISHWASHER: {
+    description: "Dishwasher (Kitchen & Dining)",
+    imageUrl: "URL for Dishwasher (Kitchen & Dining)",
+  },
+  KITCHEN_DINING_HIGHCHAIR: {
+    description: "Highchair (Kitchen & Dining)",
+    imageUrl: "URL for Highchair (Kitchen & Dining)",
+  },
+  KITCHEN_DINING_ROOM: {
+    description: "Room (Kitchen & Dining)",
+    imageUrl: "URL for Room (Kitchen & Dining)",
+  },
+  ENTERTAINMENT_BOOKS: {
+    description: "Books (Entertainment)",
+    imageUrl: "URL for Books (Entertainment)",
+  },
+  ENTERTAINMENT_DVD: {
+    description: "DVD (Entertainment)",
+    imageUrl: "URL for DVD (Entertainment)",
+  },
+  ENTERTAINMENT_STEREO: {
+    description: "Stereo (Entertainment)",
+    imageUrl: "URL for Stereo (Entertainment)",
+  },
+  OUTDOOR_GARDEN: {
+    description: "Garden (Outdoor)",
+    imageUrl: "URL for Garden (Outdoor)",
+  },
+  POOL_SPA_PRIVATE_POOL: {
+    description: "Private Pool (Pool & Spa)",
+    imageUrl: "URL for Private Pool (Pool & Spa)",
+  },
+  LOCATION_TYPE_BEACH_FRONT: {
+    description: "Beach Front",
+    imageUrl: "URL for Beach Front",
+  },
+  ACCOMMODATIONS_OTHER_SERVICES_CONCIERGE: {
+    description: "Concierge",
+    imageUrl: "URL for Concierge",
+  },
+  LOCATION_TYPE_MOUNTAIN: {
+    description: "Mountain View",
+    imageUrl: "URL for Mountain View",
+  },
+  LOCATION_TYPE_VILLAGE: {
+    description: "Village View",
+    imageUrl: "URL for Village View",
+  },
+  SPORTS_MOUNTAIN_BIKING: {
+    description: "Mountain Biking",
+    imageUrl: "URL for Mountain Biking",
+  },
+  ATTRACTIONS_MUSEUMS: {
+    description: "Museums",
+    imageUrl: "URL for Museums",
+  },
+  ENTERTAINMENT_POOL_TABLE: {
+    description: "Pool Table",
+    imageUrl: "URL for Pool Table",
+  },
+  ENTERTAINMENT_GAMES: {
+    description: "Games",
+    imageUrl: "URL for Games",
+  },
+  AMENITIES_GARAGE: {
+    description: "Garage",
+    imageUrl: "URL for Garage",
+  },
+  AMENITIES_DRYER: {
+    description: "Dryer",
+    imageUrl: "URL for Dryer",
+  },
+  ENTERTAINMENT_PING_PONG_TABLE: {
+    description: "Ping Pong Table",
+    imageUrl: "URL for Ping Pong Table",
+  },
+  ENTERTAINMENT_VIDEO_LIBRARY: {
+    description: "Video Library",
+    imageUrl: "URL for Video Library",
+  },
+  AMENITIES_HEATING: {
+    description: "Heating",
+    imageUrl: "URL for Heating",
+  },
+  LEISURE_SHOPPING: {
+    description: "Shopping",
+    imageUrl: "URL for Shopping",
+  },
 };
 
         // Function to convert amenity codes to text descriptions
