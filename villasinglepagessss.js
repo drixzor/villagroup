@@ -151,11 +151,26 @@
         console.log('test', property);
 
         // Check if amenities is not null or undefined before splitting
-        if (amenities) {
-            // Use the convertAmenitiesToString function to display amenities
-            const amenitiesString = convertAmenitiesToString(amenities);
-            document.querySelector(".amenities").textContent = `${amenitiesString}`;
-        }
+if (amenities) {
+    // Split the amenities string into an array using commas as the delimiter
+    const amenitiesArray = amenities.split(',').map(amenity => amenity.trim());
+
+    // Get the element with the class .amenities
+    const amenitiesContainer = document.querySelector('.amenities');
+
+    // Create an unordered list element
+    const amenitiesList = document.createElement('ul');
+
+    // Loop through the amenities array and create list items
+    amenitiesArray.forEach((amenity) => {
+        const listItem = document.createElement('li');
+        listItem.textContent = amenity;
+        amenitiesList.appendChild(listItem);
+    });
+
+    // Append the list to the .amenities container
+    amenitiesContainer.appendChild(amenitiesList);
+}
 
         document.querySelector(".property-type").textContent = `Property Type: ${propertyType}`;
         document.querySelector(".accommodations-summary").textContent = `Accommodations Summary: ${accommodationsSummary}`;
