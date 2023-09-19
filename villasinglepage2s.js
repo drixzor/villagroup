@@ -216,6 +216,27 @@
     description: "Ice Maker",
     imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099743a6667fcf72ced0dd_ice.png",
   },
+  SPORTS_SAILING: {
+    description: "Sailing",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099b36f977efe1c9d95659_boat.png",
+  },
+  SPORTS_SAILING: {
+    description: "Sailing",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099b36f977efe1c9d95659_boat.png",
+  }, 
+  THEMES_HISTORIC: {
+    description: "Historic Location",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099b94811bf79de29ea221_arch.png",
+  }, 
+  AMENITIES_ELEVATOR: {
+    description: "Elevator",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099bdedc91670e655c9d09_elevator.png",
+  }, 
+  POOL_SPA_HOT_TUB: {
+    description: "Hot Tub",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099c1af993a66b544fd4ba_hot-tub.png",
+  }, 
+                
 };
 
         // Function to convert amenity codes to text descriptions
