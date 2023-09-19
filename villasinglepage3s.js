@@ -314,6 +314,7 @@
                 changeover,
                 images,
                 amenities,
+                bathrooms,
                 propertyType,
                 accommodationsSummary
             } = property;
@@ -325,6 +326,7 @@
             document.querySelector(".status").textContent = `Status: ${status}`;
             document.querySelector(".guest-number").textContent = `Up to ${maximumOccupancyGuests} Guests`;
             document.querySelector(".bed-number").textContent = `${bedrooms} Bedrooms`;
+            document.querySelector(".bath-number").textContent = `${bathrooms} Bathrooms`;
             document.querySelector(".address-line").textContent = `Address Line: ${addressLine}`;
             document.querySelector(".villa-city").textContent = `${city}`;
             document.querySelector(".country").textContent = `Country: ${country}`;
