@@ -1,4 +1,4 @@
-<script>
+
     // Create a mapping object for amenity codes to descriptions
     const amenityMappings = {
         LOCATION_TYPE_RESORT: "Resort Location",
@@ -204,4 +204,3 @@
             lightboxImage.src = imagesArray[newIndex].trim();
         }
     }
-</script>
