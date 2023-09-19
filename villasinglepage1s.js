@@ -98,123 +98,123 @@
   },
   LEISURE_WATER_SPORTS: {
     description: "Water Sports",
-    imageUrl: "URL for Water Sports",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650995632b7c2de84ecf5d45_kayak.png",
   },
   AMENITIES_FIREPLACE: {
     description: "Fireplace",
-    imageUrl: "URL for Fireplace",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650995827560cbe2509e3448_fireplace.png",
   },
   POOL_SPA_SAUNA: {
     description: "Pool & Spa (Sauna)",
-    imageUrl: "URL for Pool & Spa (Sauna)",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650995b461ed58c3db75fd57_steam-room.png",
   },
   KITCHEN_DINING_REFRIGERATOR: {
-    description: "Refrigerator (Kitchen & Dining)",
-    imageUrl: "URL for Refrigerator (Kitchen & Dining)",
+    description: "Refrigerator",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650995d3f54c3602dc23a9ec_refrigerator.png",
   },
   KITCHEN_DINING_DISHWASHER: {
-    description: "Dishwasher (Kitchen & Dining)",
-    imageUrl: "URL for Dishwasher (Kitchen & Dining)",
+    description: "Dishwasher",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650995feb58c77281288d5fa_dishwasher.png",
   },
   KITCHEN_DINING_HIGHCHAIR: {
-    description: "Highchair (Kitchen & Dining)",
-    imageUrl: "URL for Highchair (Kitchen & Dining)",
+    description: "Highchair",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099627f90a05230039f7c8_baby-chair.png",
   },
   KITCHEN_DINING_ROOM: {
-    description: "Room (Kitchen & Dining)",
-    imageUrl: "URL for Room (Kitchen & Dining)",
+    description: "Kitchen",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/6509964e0ba4c9cac5679d09_kitchen.png",
   },
   ENTERTAINMENT_BOOKS: {
-    description: "Books (Entertainment)",
-    imageUrl: "URL for Books (Entertainment)",
+    description: "Books",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650996717b13f83b01866bee_stack-of-books.png",
   },
   ENTERTAINMENT_DVD: {
-    description: "DVD (Entertainment)",
-    imageUrl: "URL for DVD (Entertainment)",
+    description: "DVD",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/6509969ae5079bce2b79aaf3_dvd-player.png",
   },
   ENTERTAINMENT_STEREO: {
-    description: "Stereo (Entertainment)",
-    imageUrl: "URL for Stereo (Entertainment)",
+    description: "Stereo",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650996c06a050a1f22a3eaa0_stereo.png",
   },
   OUTDOOR_GARDEN: {
-    description: "Garden (Outdoor)",
-    imageUrl: "URL for Garden (Outdoor)",
+    description: "Outdoor Garden",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650996ef72d10e33e4bd41d0_terrace%20(1).png",
   },
   POOL_SPA_PRIVATE_POOL: {
-    description: "Private Pool (Pool & Spa)",
-    imageUrl: "URL for Private Pool (Pool & Spa)",
+    description: "Private Pool & Spa",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/6509972620073363a221ea15_pool.png",
   },
   LOCATION_TYPE_BEACH_FRONT: {
     description: "Beach Front",
-    imageUrl: "URL for Beach Front",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650993b281077a19736c8503_sea.png",
   },
   ACCOMMODATIONS_OTHER_SERVICES_CONCIERGE: {
     description: "Concierge",
-    imageUrl: "URL for Concierge",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099963f993a66b544bfe7c_concierge%20(1).png",
   },
   LOCATION_TYPE_MOUNTAIN: {
     description: "Mountain View",
-    imageUrl: "URL for Mountain View",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/6509993057ee810c89b59f41_mountain.png",
   },
   LOCATION_TYPE_VILLAGE: {
     description: "Village View",
-    imageUrl: "URL for Village View",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650999118444bf6caf88b95e_farming.png",
   },
   SPORTS_MOUNTAIN_BIKING: {
     description: "Mountain Biking",
-    imageUrl: "URL for Mountain Biking",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650998eb624d9cee88e328d2_mountain-cycling.png",
   },
   ATTRACTIONS_MUSEUMS: {
     description: "Museums",
-    imageUrl: "URL for Museums",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650998bf624d9cee88e2ffa0_museum-art.png",
   },
   ENTERTAINMENT_POOL_TABLE: {
     description: "Pool Table",
-    imageUrl: "URL for Pool Table",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099893ab9ceeaabfd8ca18_billiards.png",
   },
   ENTERTAINMENT_GAMES: {
     description: "Games",
-    imageUrl: "URL for Games",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/6509987aa6667fcf72d025e1_console.png",
   },
   AMENITIES_GARAGE: {
     description: "Garage",
-    imageUrl: "URL for Garage",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/6509985e2c1f444dfea1dacf_smart-garage.png",
   },
   AMENITIES_DRYER: {
     description: "Dryer",
-    imageUrl: "URL for Dryer",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650991135d491452201fb127_hairdryer.png",
   },
   ENTERTAINMENT_PING_PONG_TABLE: {
     description: "Ping Pong Table",
-    imageUrl: "URL for Ping Pong Table",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650998272c1d3bf11f59b5a4_table-tennis.png",
   },
   ENTERTAINMENT_VIDEO_LIBRARY: {
     description: "Video Library",
-    imageUrl: "URL for Video Library",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099804e951a9e4a5a00391_video-library.png",
   },
   AMENITIES_HEATING: {
     description: "Heating",
-    imageUrl: "URL for Heating",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650997e98640b596bb2aaf8c_heating.png",
   },
   LEISURE_SHOPPING: {
     description: "Shopping",
-    imageUrl: "URL for Shopping",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650997cb1ab3e09d9af17caf_online-shopping.png",
   },
   AMENITIES_FITNESS_ROOM: {
     description: "Fitness Room",
-    imageUrl: "URL for Shopping",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650997aeed4b09c75afc9c16_stationary-bike.png",
   },
   LOCATION_TYPE_DOWNTOWN: {
     description: "Downtown Location",
-    imageUrl: "URL for Shopping",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/6509978d811bf79de298f3a8_skyscrapers.png",
   },
   LOCATION_TYPE_RURAL: {
     description: "Rural Location",
-    imageUrl: "URL for Shopping",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/6509976be1fc560052265132_agricultural.png",
   },
   KITCHEN_DINING_ICE_MAKER: {
     description: "Ice Maker",
-    imageUrl: "URL for Shopping",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099743a6667fcf72ced0dd_ice.png",
   },
 };
 
