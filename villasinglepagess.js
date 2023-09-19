@@ -1,46 +1,47 @@
+<script>
     // Create a mapping object for amenity codes to descriptions
     const amenityMappings = {
-    LOCATION_TYPE_RESORT: "Resort Location",
-    SPORTS_GOLF: "Golf",
-    ATTRACTIONS_HEALTH_BEAUTY_SPA: "Health & Beauty Spa",
-    LEISURE_HORSEBACK_RIDING: "Horseback Riding",
-    ATTRACTIONS_WATER_PARKS: "Water Parks",
-    SPORTS_SWIMMING: "Swimming",
-    AMENITIES_HAIR_DRYER: "Hair Dryer",
-    AMENITIES_INTERNET: "Internet",
-    AMENITIES_AIR_CONDITIONING: "Air Conditioning",
-    AMENITIES_IRON_BOARD: "Iron & Ironing Board",
-    KITCHEN_DINING_MICROWAVE: "Microwave",
-    KITCHEN_DINING_AREA: "Dining Area",
-    OUTDOOR_BALCONY: "Balcony",
-    AMENITIES_PARKING: "Parking",
-    OUTDOOR_DECK_PATIO_UNCOVERED: "Uncovered Deck/Patio",
-    POOL_SPA_HEATED_POOL: "Heated Pool",
-    LOCATION_TYPE_OCEAN_VIEW: "Ocean View",
-    LOCATION_TYPE_BEACH: "Beach",
-    LOCATION_TYPE_WATERFRONT: "Waterfront",
-    THEMES_FAMILY: "Family Themes",
-    SPORTS_SNORKELING: "Snorkeling",
-    SPORTS_CYCLING: "Cycling",
-    SPORTS_SCUBA_OR_SNORKELING: "Scuba or Snorkeling",
-    SPORTS_FISHING: "Fishing",
-    LEISURE_WATER_SPORTS: "Water Sports",
-    AMENITIES_FIREPLACE: "Fireplace",
-    POOL_SPA_SAUNA: "Pool & Spa (Sauna)",
-    AMENITIES_IRON_BOARD: "Iron & Ironing Board",
-    KITCHEN_DINING_REFRIGERATOR: "Refrigerator (Kitchen & Dining)",
-    KITCHEN_DINING_DISHWASHER: "Dishwasher (Kitchen & Dining)",
-    KITCHEN_DINING_MICROWAVE: "Microwave (Kitchen & Dining)",
-    KITCHEN_DINING_HIGHCHAIR: "Highchair (Kitchen & Dining)",
-    KITCHEN_DINING_AREA: "Area (Kitchen & Dining)",
-    ENTERTAINMENT_BOOKS: "Books (Entertainment)",
-    ENTERTAINMENT_DVD: "DVD (Entertainment)",
-    ENTERTAINMENT_STEREO: "Stereo (Entertainment)",
-    OUTDOOR_GARDEN: "Garden (Outdoor)",
-    POOL_SPA_PRIVATE_POOL: "Private Pool (Pool & Spa)",
-    POOL_SPA_HEATED_POOL: "Heated Pool (Pool & Spa)",
-    LOCATION_TYPE_BEACH_FRONT: "Beach Front"
-};
+        LOCATION_TYPE_RESORT: "Resort Location",
+        SPORTS_GOLF: "Golf",
+        ATTRACTIONS_HEALTH_BEAUTY_SPA: "Health & Beauty Spa",
+        LEISURE_HORSEBACK_RIDING: "Horseback Riding",
+        ATTRACTIONS_WATER_PARKS: "Water Parks",
+        SPORTS_SWIMMING: "Swimming",
+        AMENITIES_HAIR_DRYER: "Hair Dryer",
+        AMENITIES_INTERNET: "Internet",
+        AMENITIES_AIR_CONDITIONING: "Air Conditioning",
+        AMENITIES_IRON_BOARD: "Iron & Ironing Board",
+        KITCHEN_DINING_MICROWAVE: "Microwave",
+        KITCHEN_DINING_AREA: "Dining Area",
+        OUTDOOR_BALCONY: "Balcony",
+        AMENITIES_PARKING: "Parking",
+        OUTDOOR_DECK_PATIO_UNCOVERED: "Uncovered Deck/Patio",
+        POOL_SPA_HEATED_POOL: "Heated Pool",
+        LOCATION_TYPE_OCEAN_VIEW: "Ocean View",
+        LOCATION_TYPE_BEACH: "Beach",
+        LOCATION_TYPE_WATERFRONT: "Waterfront",
+        THEMES_FAMILY: "Family Themes",
+        SPORTS_SNORKELING: "Snorkeling",
+        SPORTS_CYCLING: "Cycling",
+        SPORTS_SCUBA_OR_SNORKELING: "Scuba or Snorkeling",
+        SPORTS_FISHING: "Fishing",
+        LEISURE_WATER_SPORTS: "Water Sports",
+        AMENITIES_FIREPLACE: "Fireplace",
+        POOL_SPA_SAUNA: "Pool & Spa (Sauna)",
+        AMENITIES_IRON_BOARD: "Iron & Ironing Board",
+        KITCHEN_DINING_REFRIGERATOR: "Refrigerator (Kitchen & Dining)",
+        KITCHEN_DINING_DISHWASHER: "Dishwasher (Kitchen & Dining)",
+        KITCHEN_DINING_MICROWAVE: "Microwave (Kitchen & Dining)",
+        KITCHEN_DINING_HIGHCHAIR: "Highchair (Kitchen & Dining)",
+        KITCHEN_DINING_AREA: "Area (Kitchen & Dining)",
+        ENTERTAINMENT_BOOKS: "Books (Entertainment)",
+        ENTERTAINMENT_DVD: "DVD (Entertainment)",
+        ENTERTAINMENT_STEREO: "Stereo (Entertainment)",
+        OUTDOOR_GARDEN: "Garden (Outdoor)",
+        POOL_SPA_PRIVATE_POOL: "Private Pool (Pool & Spa)",
+        POOL_SPA_HEATED_POOL: "Heated Pool (Pool & Spa)",
+        LOCATION_TYPE_BEACH_FRONT: "Beach Front"
+    };
 
     // Function to convert amenity codes to text descriptions
     function convertAmenitiesToString(amenities) {
@@ -59,18 +60,18 @@
     });
 
     async function fetchPropertyData(propertyId) {
-        const apiUrl = "https://spapi.weboscy.com/property?id="+propertyId;
+        const apiUrl = "https://spapi.weboscy.com/property?id=" + propertyId;
 
         try {
             const matchingProperty = await fetchData(apiUrl);
-            
+
             if (matchingProperty) {
                 populatePropertyDetails(matchingProperty);
                 // Update the data-calendar-property-id attribute with property ID for the widget
                 var bookingWidget = document.getElementById('booking-widget-container');
                 if (bookingWidget) {
                     bookingWidget.innerHTML = `<div data-calendar-key="306CF20FB9002DA05908D846CACD52D722130AB6F33ED392045C5EE6D0A371C5D639889CDCBFD28CD218A78ED8791E35" data-calendar-property-id="${matchingProperty.propertyId}">Your widget will appear here.</div>`;
-                }                         
+                }
 
             } else {
                 console.log("Property not found.");
@@ -148,13 +149,14 @@
         document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
         document.querySelector(".images").textContent = `Images: ${images}`;
         console.log('test', property);
+
         // Check if amenities is not null or undefined before splitting
         if (amenities) {
             // Use the convertAmenitiesToString function to display amenities
             const amenitiesString = convertAmenitiesToString(amenities);
             document.querySelector(".amenities").textContent = `${amenitiesString}`;
         }
-        
+
         document.querySelector(".property-type").textContent = `Property Type: ${propertyType}`;
         document.querySelector(".accommodations-summary").textContent = `Accommodations Summary: ${accommodationsSummary}`;
         document.querySelector(".data-map-lat").textContent = `${latitude}`;
@@ -202,3 +204,4 @@
             lightboxImage.src = imagesArray[newIndex].trim();
         }
     }
+</script>
