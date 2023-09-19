@@ -164,11 +164,14 @@ function populatePropertyDetails(property) {
         const amenitiesList = document.createElement('ul');
 
         // Loop through the amenity descriptions and create list items
-        amenityDescriptions.forEach((description) => {
-            const listItem = document.createElement('li');
-            listItem.textContent = description;
-            amenitiesList.appendChild(listItem);
-        });
+amenityDescriptions.forEach((description) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = description;
+    amenitiesList.appendChild(listItem);
+
+    // Add the amenity-block class to the list item
+    listItem.classList.add('amenity-block');
+});
 
         // Append the list to the .amenities container
         amenitiesContainer.appendChild(amenitiesList);
