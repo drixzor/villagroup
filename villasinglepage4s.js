@@ -235,7 +235,19 @@
   POOL_SPA_HOT_TUB: {
     description: "Hot Tub",
     imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/65099c1af993a66b544fd4ba_hot-tub.png",
-  }, 
+  },
+  LOCATION_TYPE_GOLF_COURSE_VIEW: {
+    description: "Golf Course View",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650ae0c7cc1ec46b2541fc76_golf-course.png",
+  },
+  ACCOMMODATIONS_HOUSE_CLEANING_INCLUDED: {
+    description: "House Cleaning Included",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650ae14e9022ce4cf5c11535_cleaning-products.png",
+  },
+   SUITABILITY_ACCESSIBILITY_WHEELCHAIR_ACCESSIBLE: {
+    description: "Wheelchair Accessible",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650ae1a02fa3a33d36883d79_disabled-person.png",
+  },
                 
 };
 
