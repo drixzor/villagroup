@@ -1,4 +1,4 @@
-// Function to format a date string from yyyy-MM-dd to yyyy/MM/dd
+  // Function to format a date string from yyyy-MM-dd to yyyy/MM/dd
   const formatDateForURL = (dateString) => {
     if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
       const [year, month, day] = dateString.split('-');
@@ -52,27 +52,16 @@
     const toDate = urlParams.get('to');
     const selectedFeatures = urlParams.get('features');
 
-    // Default dates to "2023-09-15" if they are not provided
-    const formattedFromDate = fromDate || "2023-09-15";
-    const formattedToDate = toDate || "2023-09-15";
-
-    // Convert the date parameters to the desired format (yyyy/MM/dd)
-    const formattedFromDateForURL = formatDateForURL(formattedFromDate);
-    const formattedToDateForURL = formatDateForURL(formattedToDate);
-
-    // Log the selected country, city, and dates
-    console.log("Selected Country:", selectedCountry);
-    console.log("Selected City:", selectedCity);
-    console.log("From Date:", formattedFromDate);
-    console.log("To Date:", formattedToDate);
-    console.log("Selected Features:", selectedFeatures);
-
     // Construct the JSON search URL with the formatted date parameters and features
     const searchParams = new URLSearchParams();
-    searchParams.set('from', formattedFromDateForURL);
-    searchParams.set('to', formattedToDateForURL);
     if (selectedCountry) searchParams.set('country', selectedCountry);
     if (selectedCity) searchParams.set('city', selectedCity);
+    if (fromDate && toDate) {
+      const formattedFromDateForURL = formatDateForURL(fromDate);
+      const formattedToDateForURL = formatDateForURL(toDate);
+      searchParams.set('from', formattedFromDateForURL);
+      searchParams.set('to', formattedToDateForURL);
+    }
     if (selectedFeatures) searchParams.set('features', selectedFeatures);
 
     const searchURL = propertiesURL + '?' + searchParams.toString();
@@ -187,4 +176,10 @@
         window.open('/villa-item?id=' + propertyID, '_blank');
       }
     }
+  });
+
+  // Event listener for feature checkboxes
+  const featureCheckboxes = document.querySelectorAll('input[name="Features"]');
+  featureCheckboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', updateURLWithSelectedFeatures);
   });
