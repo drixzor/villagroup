@@ -328,6 +328,7 @@
                 amenities,
                 bathrooms,
                 propertyType,
+                min_price,    
                 accommodationsSummary
             } = property;
 
@@ -357,6 +358,7 @@
             document.querySelector(".description").textContent = `Description: ${description}`;
             document.querySelector(".villa-description").innerHTML = `${accommodationsSummary}`;
             document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
+            document.querySelector(".min-price").textContent = `Changeover: ${min_price}`;
             document.querySelector(".images").textContent = `Images: ${images}`;
             console.log('test', property);
 
