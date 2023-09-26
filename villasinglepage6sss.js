@@ -356,7 +356,8 @@
             document.querySelector(".smoking-allowed").textContent = `Smoking Allowed: ${smokingAllowed}`;
             document.querySelector(".subcaption").textContent = `Subcaption: ${subcaption}`;
             document.querySelector(".description").textContent = `Description: ${description}`;
-            document.querySelector(".villa-description,.about-text").innerHTML = `${accommodationsSummary}`;
+            document.querySelector(".villa-description").innerHTML = `${accommodationsSummary}`;
+            document.querySelector(".about-text").innerHTML = `${accommodationsSummary}`;
             document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
             document.querySelector(".min-price").textContent = `${min_price}`;
             document.querySelector(".images").textContent = `Images: ${images}`;
