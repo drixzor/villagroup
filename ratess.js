@@ -28,7 +28,7 @@ $(document).ready(function() {
             var rentalRate = $("<div>").addClass("rental-rate");
 
             // Set the text for rental-rate based on JSON data (date, price, and "/week")
-            rentalRate.text(item.date + ": $" + item.price + "/week");
+            rentalRate.text(item.date + ": €" + item.price + "/week");
 
             // Append rentalRate to rentalRateBlock
             rentalRateBlock.append(rentalRate);
