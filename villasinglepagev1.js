@@ -335,7 +335,7 @@ function populatePropertyDetails(property) {
     // Populate HTML elements
     document.querySelector(".villa-id").textContent = `Villa ${id}`;
     document.querySelector(".villa-id").textContent = `Villa ${id}`;
-    document.querySelector(".property-id").textContent = `${propertyId}`;
+    document.querySelector(".property-id").textContent = `Villa ${propertyId}`;
     document.querySelector(".status").textContent = `Status: ${status}`;
     document.querySelector(".guest-number").textContent = `Up to ${maximumOccupancyGuests} Guests`;
     document.querySelector(".bed-number").textContent = `${bedrooms} Bedrooms`;
