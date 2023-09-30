@@ -51,7 +51,7 @@ $(document).ready(function() {
         });
 
         // Initialize Swiper Slider
-        var swiper = new Swiper(".reviews-grid", {
+        var swiper = new Swiper(".swiper-container", {
           slidesPerView: 3,
           spaceBetween: 20,
           navigation: {
@@ -65,10 +65,10 @@ $(document).ready(function() {
           },
         });
       } else {
-        $(".reviews-grid").html("No reviews available.");
+        $(".swiper-container").html("No reviews available.");
       }
     });
   } else {
-    $(".reviews-grid").html("Property not found.");
+    $(".swiper-container").html("Property not found.");
   }
 });
