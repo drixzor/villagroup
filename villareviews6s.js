@@ -16,6 +16,9 @@ $(document).ready(function () {
   // Declare the moreReviewsDisplayed variable here
   var moreReviewsDisplayed = false; // Initialize it as false
 
+  // Declare the reviewsGrid variable here
+  var reviewsGrid = $(".reviews-grid");
+
   // If propertyId is found, fetch and display reviews
   if (!isNaN(propertyId)) {
     var apiUrl = "https://spapi.weboscy.com/testimonial?id=" + propertyId;
@@ -90,9 +93,6 @@ $(document).ready(function () {
     $.getJSON(apiUrl, function (data) {
       // Check if data is an array
       if (Array.isArray(data) && data.length > 0) {
-        // Create a container for the reviews grid
-        var reviewsGrid = $(".reviews-grid");
-
         // Your existing button element
         var showMoreButton = $(".more-reviews");
 
@@ -119,14 +119,14 @@ $(document).ready(function () {
         displayAdditionalReviews(data);
       } else {
         // Handle the case where data is not an array or is empty (no reviews to display)
-        $(".reviews-grid").html("No reviews available.");
+        reviewsGrid.html("No reviews available.");
         // Hide the "Show More Reviews" button as there are no reviews
         $(".more-reviews").hide();
       }
     });
   } else {
     // Handle the case where propertyId is not found or is not a valid number
-    $(".reviews-grid").html("Property not found or invalid ID.");
+    reviewsGrid.html("Property not found or invalid ID.");
     // Hide the "Show More Reviews" button if there is an issue
     $(".more-reviews").hide();
   }
