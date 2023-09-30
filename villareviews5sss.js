@@ -21,7 +21,10 @@ $(document).ready(function () {
     var displayedGuestNames = [];
 
     // Variable to keep track of the number of reviews displayed
-    var displayedReviewCount = 0; // Declare the variable here
+    var displayedReviewCount = 0;
+
+    // Declare the reviewsGrid variable here
+    var reviewsGrid = $(".reviews-grid");
 
     // Function to display additional reviews
     function displayAdditionalReviews(data) {
@@ -87,9 +90,6 @@ $(document).ready(function () {
     $.getJSON(apiUrl, function (data) {
       // Check if data is an array
       if (Array.isArray(data) && data.length > 0) {
-        // Create a container for the reviews grid
-        var reviewsGrid = $(".reviews-grid");
-
         // Your existing button element
         var showMoreButton = $(".more-reviews");
 
