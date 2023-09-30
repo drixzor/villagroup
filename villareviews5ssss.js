@@ -13,6 +13,9 @@ $(document).ready(function () {
   // Extract the dynamic ID from the URL and parse it as an integer
   var propertyId = parseInt(getUrlParameter('id'));
 
+  // Declare the moreReviewsDisplayed variable here
+  var moreReviewsDisplayed = false; // Initialize it as false
+
   // If propertyId is found, fetch and display reviews
   if (!isNaN(propertyId)) {
     var apiUrl = "https://spapi.weboscy.com/testimonial?id=" + propertyId;
@@ -22,9 +25,6 @@ $(document).ready(function () {
 
     // Variable to keep track of the number of reviews displayed
     var displayedReviewCount = 0;
-
-    // Declare the reviewsGrid variable here
-    var reviewsGrid = $(".reviews-grid");
 
     // Function to display additional reviews
     function displayAdditionalReviews(data) {
@@ -90,6 +90,9 @@ $(document).ready(function () {
     $.getJSON(apiUrl, function (data) {
       // Check if data is an array
       if (Array.isArray(data) && data.length > 0) {
+        // Create a container for the reviews grid
+        var reviewsGrid = $(".reviews-grid");
+
         // Your existing button element
         var showMoreButton = $(".more-reviews");
 
