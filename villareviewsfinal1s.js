@@ -1,4 +1,4 @@
-$(document).ready(function() {
+        $(document).ready(function() {
             // Function to get URL parameter by name
             function getUrlParameter(name) {
                 var url = window.location.href;
