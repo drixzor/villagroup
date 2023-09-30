@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Function to get URL parameter by name
   function getUrlParameter(name) {
     var url = window.location.href;
@@ -20,13 +20,15 @@ $(document).ready(function() {
 
     $.getJSON(apiUrl, function (data) {
       if (Array.isArray(data) && data.length > 0) {
+        // Get the Swiper container
         var reviewsGrid = $(".swiper-wrapper");
 
         $.each(data, function (index, item) {
           if (displayedGuestNames.indexOf(item.guest) === -1) {
             displayedGuestNames.push(item.guest);
 
-            var reviewContainer = $("<div>").addClass("swiper-slide"); // Use 'swiper-slide' class for Swiper
+            // Create a .review-container for each review
+            var reviewContainer = $("<div>").addClass("swiper-slide review-container");
 
             var starWrapper = $("<div>").addClass("star-wrapper");
             var rating = Math.floor(item.rating);
@@ -44,8 +46,10 @@ $(document).ready(function() {
             var reviewText = $("<div>").addClass("review-text").html(decodedReviewContent);
             var reviewName = $("<div>").addClass("review-name").text(item.guest);
 
+            // Append review content to the .review-container
             reviewContainer.append(starWrapper, reviewText, reviewName);
 
+            // Append the .review-container to the Swiper container
             reviewsGrid.append(reviewContainer);
           }
         });
@@ -54,10 +58,13 @@ $(document).ready(function() {
         var swiper = new Swiper(".swiper-container", {
           slidesPerView: 3,
           spaceBetween: 20,
+          
+          // Optional navigation buttons
           navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
           },
+          
           breakpoints: {
             768: {
               slidesPerView: 1,
