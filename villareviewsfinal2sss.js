@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   // Function to get URL parameter by name
   function getUrlParameter(name) {
     var url = window.location.href;
@@ -12,7 +12,6 @@ $(document).ready(function () {
 
   // Extract the dynamic ID from the URL and parse it as an integer
   var propertyId = parseInt(getUrlParameter('id'));
-
   if (propertyId !== null) {
     var apiUrl = "https://spapi.weboscy.com/testimonial?id=" + propertyId;
 
@@ -21,13 +20,13 @@ $(document).ready(function () {
 
     $.getJSON(apiUrl, function (data) {
       if (Array.isArray(data) && data.length > 0) {
-        var reviewsGrid = $(".reviews-grid");
+        var reviewsGrid = $(".swiper-wrapper");
 
         $.each(data, function (index, item) {
           if (displayedGuestNames.indexOf(item.guest) === -1) {
             displayedGuestNames.push(item.guest);
 
-            var reviewContainer = $("<div>").addClass("review-container");
+            var reviewContainer = $("<div>").addClass("swiper-slide"); // Use 'swiper-slide' class for Swiper
 
             var starWrapper = $("<div>").addClass("star-wrapper");
             var rating = Math.floor(item.rating);
@@ -51,20 +50,19 @@ $(document).ready(function () {
           }
         });
 
-        // Initialize Slick Slider
-        reviewsGrid.slick({
-          infinite: true,
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: true,
-          responsive: [
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 1,
-              },
+        // Initialize Swiper Slider
+        var swiper = new Swiper(".reviews-grid", {
+          slidesPerView: 3,
+          spaceBetween: 20,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 1,
             },
-          ],
+          },
         });
       } else {
         $(".reviews-grid").html("No reviews available.");
