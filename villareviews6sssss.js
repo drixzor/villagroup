@@ -81,8 +81,7 @@ $(document).ready(function () {
 
       // Check if all reviews have been displayed
       if (displayedReviewCount >= data.length) {
-        // Hide the "Show More Reviews" button
-        $(".more-reviews").hide();
+        $(".more-reviews").hide(); // Hide the button when all reviews are shown
       }
     }
 
@@ -112,7 +111,6 @@ $(document).ready(function () {
       } else {
         // Handle the case where data is not an array or is empty (no reviews to display)
         $(".reviews-grid").html("No reviews available.");
-        $(".more-reviews").hide();
       }
     });
   } else {
