@@ -13,12 +13,6 @@ $(document).ready(function () {
   // Extract the dynamic ID from the URL and parse it as an integer
   var propertyId = parseInt(getUrlParameter('id'));
 
-  // Declare the moreReviewsDisplayed variable here
-  var moreReviewsDisplayed = false; // Initialize it as false
-
-  // Declare the reviewsGrid variable here
-  var reviewsGrid = $(".reviews-grid");
-
   // If propertyId is found, fetch and display reviews
   if (!isNaN(propertyId)) {
     var apiUrl = "https://spapi.weboscy.com/testimonial?id=" + propertyId;
@@ -29,10 +23,19 @@ $(document).ready(function () {
     // Variable to keep track of the number of reviews displayed
     var displayedReviewCount = 0;
 
+    // Determine if more reviews are currently displayed
+    var moreReviewsDisplayed = false;
+
     // Function to display additional reviews
-    function displayAdditionalReviews(data, startIndex, endIndex) {
+    function displayAdditionalReviews(data) {
+      // Determine the number of reviews to display in this batch (e.g., 4)
+      var batchSize = moreReviewsDisplayed ? data.length : 4;
+
+      // Calculate the index of the last review to display
+      var endIndex = displayedReviewCount + batchSize;
+
       // Iterate through the JSON data
-      for (var i = startIndex; i < endIndex && i < data.length; i++) {
+      for (var i = displayedReviewCount; i < endIndex && i < data.length; i++) {
         var item = data[i];
 
         // Check if this review has a guest name that hasn't been displayed yet
@@ -69,8 +72,17 @@ $(document).ready(function () {
           reviewContainer.append(starWrapper, reviewText, reviewName);
 
           // Append the review container to the reviews grid
-          reviewsGrid.append(reviewContainer);
+          $(".reviews-grid").append(reviewContainer);
         }
+      }
+
+      // Update the number of displayed reviews
+      displayedReviewCount = endIndex;
+
+      // Check if all reviews have been displayed
+      if (displayedReviewCount >= data.length) {
+        // Hide the "Show More Reviews" button
+        $(".more-reviews").hide();
       }
     }
 
@@ -78,40 +90,34 @@ $(document).ready(function () {
     $.getJSON(apiUrl, function (data) {
       // Check if data is an array
       if (Array.isArray(data) && data.length > 0) {
-        // Your existing button element
-        var showMoreButton = $(".more-reviews");
+        // Create a container for the reviews grid
+        var reviewsGrid = $(".reviews-grid");
 
-        // Initial display of reviews (display 4 reviews)
-        displayAdditionalReviews(data, 0, 4);
-
-        // Handle the existing "Show More Reviews" button click event
-        showMoreButton.on("click", function () {
-          if (moreReviewsDisplayed) {
-            // Display 4 reviews
-            var startIndex = displayedReviewCount;
-            var endIndex = startIndex + 4;
-            displayAdditionalReviews(data, startIndex, endIndex);
-            showMoreButton.text("Show More Reviews");
-          } else {
-            // Display all reviews
-            displayAdditionalReviews(data, 0, data.length);
-            showMoreButton.text("Show Less Reviews");
-          }
-
-          // Update the toggle state
+        // Handle the "Show More Reviews" button click event
+        $(".more-reviews").on("click", function () {
+          // Toggle between displaying more and fewer reviews
           moreReviewsDisplayed = !moreReviewsDisplayed;
+          reviewsGrid.empty(); // Clear existing reviews
+          displayedReviewCount = 0; // Reset the displayed review count
+          displayAdditionalReviews(data);
+          if (moreReviewsDisplayed) {
+            $(".more-reviews").text("Show Less Reviews");
+          } else {
+            $(".more-reviews").text("Show More Reviews");
+          }
         });
+
+        // Initial display of reviews (display first batch)
+        displayAdditionalReviews(data);
       } else {
         // Handle the case where data is not an array or is empty (no reviews to display)
-        reviewsGrid.html("No reviews available.");
-        // Hide the "Show More Reviews" button as there are no reviews
+        $(".reviews-grid").html("No reviews available.");
         $(".more-reviews").hide();
       }
     });
   } else {
     // Handle the case where propertyId is not found or is not a valid number
-    reviewsGrid.html("Property not found or invalid ID.");
-    // Hide the "Show More Reviews" button if there is an issue
+    $(".reviews-grid").html("Property not found or invalid ID.");
     $(".more-reviews").hide();
   }
 });
