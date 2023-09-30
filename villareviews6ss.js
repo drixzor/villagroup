@@ -30,15 +30,9 @@ $(document).ready(function () {
     var displayedReviewCount = 0;
 
     // Function to display additional reviews
-    function displayAdditionalReviews(data) {
-      // Determine the number of reviews to display in this batch (e.g., 4)
-      var batchSize = 4;
-
-      // Calculate the index of the last review to display
-      var endIndex = displayedReviewCount + batchSize;
-
+    function displayAdditionalReviews(data, startIndex, endIndex) {
       // Iterate through the JSON data
-      for (var i = displayedReviewCount; i < endIndex && i < data.length; i++) {
+      for (var i = startIndex; i < endIndex && i < data.length; i++) {
         var item = data[i];
 
         // Check if this review has a guest name that hasn't been displayed yet
@@ -78,15 +72,6 @@ $(document).ready(function () {
           reviewsGrid.append(reviewContainer);
         }
       }
-
-      // Update the number of displayed reviews
-      displayedReviewCount = endIndex;
-
-      // Check if all reviews have been displayed
-      if (displayedReviewCount >= data.length) {
-        // Hide the "Show More Reviews" button
-        $(".more-reviews").hide();
-      }
     }
 
     // Initial fetch of reviews data
@@ -96,27 +81,26 @@ $(document).ready(function () {
         // Your existing button element
         var showMoreButton = $(".more-reviews");
 
+        // Initial display of reviews (display 4 reviews)
+        displayAdditionalReviews(data, 0, 4);
+
         // Handle the existing "Show More Reviews" button click event
         showMoreButton.on("click", function () {
-          // Toggle between displaying more and fewer reviews
           if (moreReviewsDisplayed) {
-            // Display fewer reviews (reset to 4)
-            reviewsGrid.empty();
-            displayedReviewCount = 0;
-            displayAdditionalReviews(data);
+            // Display 4 reviews
+            var startIndex = displayedReviewCount;
+            var endIndex = startIndex + 4;
+            displayAdditionalReviews(data, startIndex, endIndex);
             showMoreButton.text("Show More Reviews");
           } else {
-            // Display more reviews
-            displayAdditionalReviews(data);
+            // Display all reviews
+            displayAdditionalReviews(data, 0, data.length);
             showMoreButton.text("Show Less Reviews");
           }
 
           // Update the toggle state
           moreReviewsDisplayed = !moreReviewsDisplayed;
         });
-
-        // Initial display of reviews (display first batch)
-        displayAdditionalReviews(data);
       } else {
         // Handle the case where data is not an array or is empty (no reviews to display)
         reviewsGrid.html("No reviews available.");
