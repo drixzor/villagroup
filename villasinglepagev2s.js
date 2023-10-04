@@ -361,7 +361,7 @@ function populatePropertyDetails(property) {
     document.querySelector(".about-text").innerHTML = `${accommodationsSummary}`;
     document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
     document.querySelector(".min-price").textContent = `${min_price}`;
-    document.querySelector(".price-notes").innerHTML = `Pricing Notes ${pricenotes}`;    
+    document.querySelector(".price-notes").innerHTML = `${pricenotes}`;    
     document.querySelector(".images").textContent = `Images: ${images}`;
     console.log('test', property);
 
