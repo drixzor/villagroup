@@ -347,7 +347,7 @@ function populatePropertyDetails(property) {
     document.querySelector(".name").textContent = `${name}`;
     document.querySelector(".accepted-payment-forms").textContent = `Accepted Payment Forms: ${acceptedPaymentForms}`;
     document.querySelector(".cancellation-policy").textContent = `Cancellation Policy: ${cancellationPolicy}`;
-    document.querySelector(".check-in-time").textContent = `Check-in Time: ${checkInTime}`;
+    document.querySelector(".check-in-times").textContent = `Check-in Time: ${checkInTime}`;
     document.querySelector(".check-out-time").textContent = `Check-out Time: ${checkOutTime}`;
     document.querySelector(".children-allowed").textContent = `Children Allowed: ${childrenAllowed}`;
     document.querySelector(".maximum-occupancy-adults").textContent = `Maximum Occupancy Adults: ${maximumOccupancyAdults}`;
