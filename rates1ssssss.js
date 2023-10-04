@@ -60,8 +60,10 @@ $(document).ready(function() {
         }
       } else {
         // Handle the case where exchange rate data is missing or API is unavailable
+        $(".rental-rates-grid").html("Unable to fetch exchange rate data. Showing rates in GBP.");
+        
+        // Display the rental rates in GBP without conversion
         if (Array.isArray(rentalRates)) {
-          // Display the rental rates in GBP without conversion
           $.each(rentalRates, function(index, item) {
             var rentalRateBlock = $("<div>").addClass("rental-rate-block");
             var rentalRate = $("<div>").addClass("rental-rate");
@@ -77,7 +79,7 @@ $(document).ready(function() {
         }
       }
     }).fail(function() {
-      // Handle the case where either API request fails
+      // Handle the case where both API requests fail
       $(".rental-rates-grid").html("Unable to fetch data. Showing rates in GBP.");
     });
   } else {
