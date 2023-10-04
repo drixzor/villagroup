@@ -35,7 +35,7 @@ $(document).ready(function() {
       if (exchangeData && exchangeData.rates && exchangeData.rates.EUR) {
         var exchangeRate = exchangeData.rates.EUR;
 
-        // Fetch rental rates
+        // Fetch rental rates and perform the conversion as previously shown
         $.getJSON(apiUrl, function(data) {
           if (Array.isArray(data)) {
             // Iterate through the JSON data
@@ -63,9 +63,6 @@ $(document).ready(function() {
         });
       } else {
         // Handle the case where exchange rate data is missing or API is unavailable
-        $(".rental-rates-grid").html("Exchange rate data unavailable. Showing rates in GBP.");
-        
-        // Fetch rental rates in GBP without conversion
         $.getJSON(apiUrl, function(data) {
           if (Array.isArray(data)) {
             // Iterate through the JSON data
@@ -91,9 +88,6 @@ $(document).ready(function() {
       }
     }).fail(function() {
       // Handle the case where the exchange rate API request fails
-      $(".rental-rates-grid").html("Unable to fetch exchange rate data. Showing rates in GBP.");
-      
-      // Fetch rental rates in GBP without conversion
       $.getJSON(apiUrl, function(data) {
         if (Array.isArray(data)) {
           // Iterate through the JSON data
