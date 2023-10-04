@@ -10,14 +10,9 @@ $(document).ready(function() {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 
-  // Function to convert GBP to EUR
+  // Function to convert GBP to EUR and round down to the nearest whole number
   function convertToEUR(gbpAmount, exchangeRate) {
-    return gbpAmount * exchangeRate;
-  }
-
-  // Function to format a number to always have two decimal places
-  function formatNumberToTwoDecimals(number) {
-    return parseFloat(number).toFixed(2);
+    return Math.floor(gbpAmount * exchangeRate);
   }
 
   // Extract the dynamic ID from the URL and parse it as an integer
@@ -43,12 +38,11 @@ $(document).ready(function() {
               var rentalRateBlock = $("<div>").addClass("rental-rate-block");
               var rentalRate = $("<div>").addClass("rental-rate");
 
-              // Convert GBP rate to EUR and format to two decimal places
+              // Convert GBP rate to EUR, round down, and display as whole number
               var eurRate = convertToEUR(item.week, exchangeRate);
-              var formattedEURRate = formatNumberToTwoDecimals(eurRate);
 
               // Set the text for rental-rate based on JSON data (daterange and week) in EUR
-              rentalRate.text(item.daterange + ": €" + formattedEURRate + "/week");
+              rentalRate.text(item.daterange + ": €" + eurRate + ".00/week");
 
               // Append rentalRate to rentalRateBlock
               rentalRateBlock.append(rentalRate);
