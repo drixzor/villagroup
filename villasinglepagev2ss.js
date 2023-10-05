@@ -365,6 +365,12 @@ function populatePropertyDetails(property) {
     document.querySelector(".images").textContent = `Images: ${images}`;
     console.log('test', property);
 
+     // Round up the min_price value to the nearest whole number
+    const roundedMinPrice = Math.ceil(min_price);
+
+    // Set the text for min-price with the rounded value
+    document.querySelector(".min-price").textContent = `€${roundedMinPrice}`;    
+
     // Check if amenities is not null or undefined before splitting
     if (amenities) {
         // Split the amenities string into an array using commas as the delimiter
