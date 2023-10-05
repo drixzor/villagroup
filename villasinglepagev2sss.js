@@ -330,6 +330,7 @@ function populatePropertyDetails(property) {
         propertyType,
         min_price,
         pricenotes,
+        cover,    
         accommodationsSummary
     } = property;
 
@@ -363,6 +364,7 @@ function populatePropertyDetails(property) {
     document.querySelector(".min-price").textContent = `${min_price}`;
     document.querySelector(".price-notes").innerHTML = `${pricenotes}`;    
     document.querySelector(".images").textContent = `Images: ${images}`;
+    document.querySelector(".cover").style.backgroundImage = `url(${cover})`;    
     console.log('test', property);
 
      // Round up the min_price value to the nearest whole number
