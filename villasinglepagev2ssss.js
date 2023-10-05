@@ -412,17 +412,16 @@ function populatePropertyDetails(property) {
     document.querySelector(".data-map-lat").textContent = `${latitude}`;
     document.querySelector(".data-map-lon").textContent = `${longitude}`;
 
-    const imagesArray = images.split(',').map(url => url.trim()); // Trim URLs during split
-    const mosaicContainer = document.querySelector(".villa-gallery-mosaic");
-    const firstImage = imagesArray[0].trim();
-    document.querySelector(".hero").style.backgroundImage = `url(${firstImage})`;
-    imagesArray.forEach((image, index) => {
-        const imageElement = document.createElement("div");
-        imageElement.className = `mosaic-image column-${(index % 3) + 1}`;
-        imageElement.style.backgroundImage = `url('${image.trim()}')`;
-        mosaicContainer.appendChild(imageElement);
-        imageElement.addEventListener('click', function () { openLightbox(index); });
-    });
+const imagesArray = images.split(',').map(url => url.trim()); // Trim URLs during split
+const mosaicContainer = document.querySelector(".villa-gallery-mosaic");
+
+imagesArray.forEach((image, index) => {
+    const imageElement = document.createElement("div");
+    imageElement.className = `mosaic-image column-${(index % 3) + 1}`;
+    imageElement.style.backgroundImage = `url('${image.trim()}')`;
+    mosaicContainer.appendChild(imageElement);
+    imageElement.addEventListener('click', function () { openLightbox(index); });
+});
 
     // Setup Lightbox
     var lightboxImage = document.getElementById("lightbox-img");
