@@ -17,6 +17,7 @@ $(document).ready(function() {
   if (!isNaN(dynamicId)) {
     var apiUrl = "https://spapi.weboscy.com/rates?id=" + dynamicId;
 
+    // Fetch rental rates
     $.getJSON(apiUrl, function(data) {
       if (Array.isArray(data)) {
         // Iterate through the JSON data
@@ -25,8 +26,8 @@ $(document).ready(function() {
           var rentalRateBlock = $("<div>").addClass("rental-rate-block");
           var rentalRate = $("<div>").addClass("rental-rate");
 
-          // Set the text for rental-rate based on JSON data (daterange and week)
-          rentalRate.text(item.daterange + ": €" + item.week + "/week");
+          // Set the text for rental-rate based on JSON data (daterange and week) in GBP
+          rentalRate.text(item.daterange + ": £" + item.week + "/week");
 
           // Append rentalRate to rentalRateBlock
           rentalRateBlock.append(rentalRate);
