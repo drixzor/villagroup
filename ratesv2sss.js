@@ -29,7 +29,7 @@ $(document).ready(function() {
           // Set the text for rental-rate based on JSON data (daterange and week) in GBP
           // Round the week value to the nearest whole number
           var roundedWeek = Math.floor(item.week);
-          rentalRate.text(item.daterange + ": £" + roundedWeek + "/week");
+          rentalRate.text(item.daterange + ": €" + roundedWeek + "/week");
 
           // Append rentalRate to rentalRateBlock
           rentalRateBlock.append(rentalRate);
