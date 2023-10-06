@@ -26,8 +26,9 @@ $.getJSON(apiUrl, function(data) {
       var rentalRateBlock = $("<div>").addClass("rental-rate-block");
       var rentalRate = $("<div>").addClass("rental-rate");
 
-      // Remove the cents by rounding down the EUR value to the nearest whole number
-      var roundedEur = Math.floor(parseFloat(item.eur));
+      // Parse the EUR value as a float, remove cents by rounding down to the nearest whole number
+      var eurValue = parseFloat(item.eur.replace(',', '')); // Remove commas if present
+      var roundedEur = Math.floor(eurValue);
 
       // Set the text for rental-rate based on JSON data (daterange) in EUR
       rentalRate.text(item.daterange + ": €" + roundedEur);
@@ -43,3 +44,4 @@ $.getJSON(apiUrl, function(data) {
     $(".rental-rates-grid").html("No rental rates available.");
   }
 });
+
