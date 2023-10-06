@@ -248,6 +248,14 @@
     description: "Wheelchair Accessible",
     imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/650ae1a02fa3a33d36883d79_disabled-person.png",
   },
+  THEMES_ROMANTIC: {
+    description: "Wedding Villa",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/651fb3c5dc3b882cea12edb2_wedding-location.png",
+  },
+  ENTERTAINMENT_FOOSBALL: {
+    description: "Table Football",
+    imageUrl: "https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/651fb44213c0ebcf4cfe25bf_table-soccer.png",
+  },
                 
 };
 
