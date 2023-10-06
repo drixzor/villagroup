@@ -338,7 +338,8 @@ function populatePropertyDetails(property) {
         propertyType,
         min_price_eur,
         pricenotes,
-        cover,    
+        cover,
+        region,
         accommodationsSummary
     } = property;
 
@@ -351,7 +352,7 @@ function populatePropertyDetails(property) {
     document.querySelector(".bed-number").textContent = `${bedrooms} Bedrooms`;
     document.querySelector(".bath-number").textContent = `${bathrooms} Bathrooms`;
     document.querySelector(".address-line").textContent = `Address Line: ${addressLine}`;
-    document.querySelector(".villa-city").textContent = `${country}, ${city}`;
+    document.querySelector(".villa-city").textContent = `${country}, ${city}, ${region}`;
     document.querySelector(".country").textContent = `Country: ${country}`;
     document.querySelector(".post-code").textContent = `Post Code: ${postCode}`;
     document.querySelector(".name").textContent = `${name}`;
