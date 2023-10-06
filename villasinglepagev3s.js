@@ -336,7 +336,7 @@ function populatePropertyDetails(property) {
         amenities,
         bathrooms,
         propertyType,
-        min_price,
+        min_price_eu,
         pricenotes,
         cover,    
         accommodationsSummary
@@ -369,14 +369,14 @@ function populatePropertyDetails(property) {
     document.querySelector(".villa-description").innerHTML = `${accommodationsSummary}`;
     document.querySelector(".about-text").innerHTML = `${accommodationsSummary}`;
     document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
-    document.querySelector(".min-price").textContent = `${min_price}`;
+    document.querySelector(".min-price").textContent = `${min_price_eu}`;
     document.querySelector(".price-notes").innerHTML = `${pricenotes}`;    
     document.querySelector(".images").textContent = `Images: ${images}`;
     document.querySelector(".cover").style.backgroundImage = `url(${cover})`;    
     console.log('test', property);
 
      // Round up the min_price value to the nearest whole number
-    const roundedMinPrice = Math.ceil(min_price);
+    const roundedMinPrice = Math.ceil(min_price_eu);
 
     // Set the text for min-price with the rounded value
     document.querySelector(".min-price").textContent = `€${roundedMinPrice}`;    
