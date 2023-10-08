@@ -21,12 +21,15 @@ $(document).ready(function () {
     // Global variables to track the current state
     var showAllReviews = false;
 
+    // Maximum number of reviews to show when in "Show All Reviews" state
+    var maxReviewsToShow = 10;
+
     // Function to render the reviews
     function renderReviews() {
       var reviewsContainer = $(".reviews-container");
       reviewsContainer.empty();
 
-      var endIndex = showAllReviews ? allReviews.length : 6;
+      var endIndex = showAllReviews ? Math.min(maxReviewsToShow, allReviews.length) : 6;
 
       for (var i = 0; i < endIndex; i++) {
         var item = allReviews[i];
