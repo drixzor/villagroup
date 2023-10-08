@@ -18,12 +18,17 @@ $(document).ready(function () {
     // Create an array to store all reviews
     var allReviews = [];
 
+    // Global variables to track the current state
+    var showAllReviews = false;
+
     // Function to render the reviews
-    function renderReviews(reviewsToShow) {
+    function renderReviews() {
       var reviewsContainer = $(".reviews-container");
       reviewsContainer.empty();
 
-      for (var i = 0; i < reviewsToShow; i++) {
+      var endIndex = showAllReviews ? allReviews.length : 6;
+
+      for (var i = 0; i < endIndex; i++) {
         var item = allReviews[i];
 
         // Create a div for each review
@@ -57,20 +62,22 @@ $(document).ready(function () {
       if (Array.isArray(data) && data.length > 0) {
         allReviews = data;
 
-        // Show the first 6 reviews initially
-        renderReviews(6);
+        // Show the initial set of reviews
+        renderReviews();
 
         // Handle "Show More Reviews" button click
         $(".more-reviews").click(function () {
-          // Show the next 6 reviews or remaining reviews
-          var startIndex = $(".review-container").length;
-          var endIndex = startIndex + 6;
+          // Toggle between showing all reviews and initial 6 reviews
+          showAllReviews = !showAllReviews;
 
-          if (endIndex < allReviews.length) {
-            renderReviews(endIndex);
+          // Render the reviews based on the current state
+          renderReviews();
+
+          // Update the button text based on the current state
+          if (showAllReviews) {
+            $(".more-reviews").text("Show Less Reviews");
           } else {
-            renderReviews(allReviews.length);
-            $(".more-reviews").hide(); // Hide the button when all reviews are shown
+            $(".more-reviews").text("Show More Reviews");
           }
         });
       } else {
