@@ -52,7 +52,7 @@ $(document).ready(function () {
 
         var reviewText = $("<div>").addClass("review-text").html(decodedReviewContent);
         var reviewName = $("<div>").addClass("review-name").text(item.guest);
-        var reviewName = $("<div>").addClass("review-date").text(item.date);
+        var reviewDate = $("<div>").addClass("review-date").text(item.date);
 
         // Append review content to the .review-container
         reviewContainer.append(starWrapper, reviewText, reviewName);
