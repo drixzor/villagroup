@@ -55,7 +55,7 @@ $(document).ready(function () {
         var reviewDate = $("<div>").addClass("review-date").text(item.date);
 
         // Append review content to the .review-container
-        reviewContainer.append(starWrapper, reviewText, reviewName);
+        reviewContainer.append(starWrapper, reviewText, reviewName, reviewDate);
 
         // Append the .review-container to the reviews container
         reviewsContainer.append(reviewContainer);
