@@ -371,6 +371,7 @@ function populatePropertyDetails(property) {
     document.querySelector(".about-text").innerHTML = `${accommodationsSummary}`;
     document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
     document.querySelector(".min-price").textContent = `${min_price_eur}`;
+    document.querySelector(".villa-location").textContent = `${region}`;
     document.querySelector(".price-notes").innerHTML = `${pricenotes}`;    
     document.querySelector(".images").textContent = `Images: ${images}`;
     document.querySelector(".cover").style.backgroundImage = `url(${cover})`;    
