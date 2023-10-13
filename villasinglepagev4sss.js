@@ -366,7 +366,6 @@ function populatePropertyDetails(property) {
     document.querySelector(".pets-allowed").textContent = `Pets Allowed: ${petsAllowed}`;
     document.querySelector(".smoking-allowed").textContent = `Smoking Allowed: ${smokingAllowed}`;
     document.querySelector(".subcaption").textContent = `Subcaption: ${subcaption}`;
-    document.querySelector(".description").innerHTML = `${description}`;
     document.querySelector(".villa-description").innerHTML = `${accommodationsSummary}`;
     document.querySelector(".about-text").innerHTML = `${accommodationsSummary}`;
     document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
