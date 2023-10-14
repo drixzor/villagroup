@@ -343,45 +343,45 @@ function populatePropertyDetails(property) {
         accommodationsSummary
     } = property;
 
-     // Populate HTML elements
-    document.querySelector(".villa-id").textContent = `Villa ${id}`;
-    document.querySelector(".villa-id").textContent = `Villa ${id}`;
-    document.querySelector(".property-id").textContent = `Villa ${propertyId}`;
-    document.querySelector(".status").textContent = `Status: ${status}`;
-    document.querySelector(".guest-number").textContent = `Up to ${maximumOccupancyGuests} Guests`;
-    document.querySelector(".bed-number").textContent = `${bedrooms} Bedrooms`;
-    document.querySelector(".bath-number").textContent = `${bathrooms} Bathrooms`;
-    document.querySelector(".address-line").textContent = `Address Line: ${addressLine}`;
-    // Check if country is "CY" and replace it with "Cyprus" if it is
+// Populate HTML elements
+document.querySelector(".villa-id").textContent = `Villa ${id}`;
+document.querySelector(".property-id").textContent = `Villa ${propertyId}`;
+document.querySelector(".status").textContent = `Status: ${status}`;
+document.querySelector(".guest-number").textContent = `Up to ${maximumOccupancyGuests} Guests`;
+document.querySelector(".bed-number").textContent = `${bedrooms} Bedrooms`;
+document.querySelector(".bath-number").textContent = `${bathrooms} Bathrooms`;
+document.querySelector(".address-line").textContent = `Address Line: ${addressLine}`;
+
+// Check if country is "CY" and replace it with "Cyprus" if it is
 if (country === "CY") {
     country = "Cyprus";
 }
 
-// Update the text content of the .villa-city element
 document.querySelector(".villa-city").textContent = `${country}, ${city}, ${region}`;
 
-    document.querySelector(".country").textContent = `Country: ${country}`;
-    document.querySelector(".post-code").textContent = `Post Code: ${postCode}`;
-    document.querySelector(".name").textContent = `${name}`;
-    document.querySelector(".accepted-payment-forms").textContent = `Accepted Payment Forms: ${acceptedPaymentForms}`;
-    document.querySelector(".cancellation-policy").textContent = `Cancellation Policy: ${cancellationPolicy}`;
-    document.querySelector(".check-in-times").textContent = `Check-in Time: ${checkInTime}`;
-    document.querySelector(".check-out-time").textContent = `Check-out Time: ${checkOutTime}`;
-    document.querySelector(".children-allowed").textContent = `Children Allowed: ${childrenAllowed}`;
-    document.querySelector(".maximum-occupancy-adults").textContent = `Maximum Occupancy Adults: ${maximumOccupancyAdults}`;
-    document.querySelector(".maximum-occupancy-children").textContent = `Maximum Occupancy Children: ${maximumOccupancyChildren}`;
-    document.querySelector(".pets-allowed").textContent = `Pets Allowed: ${petsAllowed}`;
-    document.querySelector(".smoking-allowed").textContent = `Smoking Allowed: ${smokingAllowed}`;
-    document.querySelector(".subcaption").textContent = `Subcaption: ${subcaption}`;
-    document.querySelector(".villa-description").innerHTML = `${accommodationsSummary}`;
-    document.querySelector(".about-text").innerHTML = `${accommodationsSummary}`;
-    document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
-    document.querySelector(".min-price").textContent = `${min_price_eur}`;
-    document.querySelector(".villa-location").textContent = `${region}`;
-    document.querySelector(".price-notes").innerHTML = `${pricenotes}`;    
-    document.querySelector(".images").textContent = `Images: ${images}`;
-    document.querySelector(".cover").style.backgroundImage = `url(${cover})`;    
-    console.log('test', property);
+document.querySelector(".country").textContent = `Country: ${country}`;
+document.querySelector(".post-code").textContent = `Post Code: ${postCode}`;
+document.querySelector(".name").textContent = `${name}`;
+document.querySelector(".accepted-payment-forms").textContent = `Accepted Payment Forms: ${acceptedPaymentForms}`;
+document.querySelector(".cancellation-policy").textContent = `Cancellation Policy: ${cancellationPolicy}`;
+document.querySelector(".check-in-times").textContent = `Check-in Time: ${checkInTime}`;
+document.querySelector(".check-out-time").textContent = `Check-out Time: ${checkOutTime}`;
+document.querySelector(".children-allowed").textContent = `Children Allowed: ${childrenAllowed}`;
+document.querySelector(".maximum-occupancy-adults").textContent = `Maximum Occupancy Adults: ${maximumOccupancyAdults}`;
+document.querySelector(".maximum-occupancy-children").textContent = `Maximum Occupancy Children: ${maximumOccupancyChildren}`;
+document.querySelector(".pets-allowed").textContent = `Pets Allowed: ${petsAllowed}`;
+document.querySelector(".smoking-allowed").textContent = `Smoking Allowed: ${smokingAllowed}`;
+document.querySelector(".subcaption").textContent = `Subcaption: ${subcaption}`;
+document.querySelector(".villa-description").innerHTML = `${accommodationsSummary}`;
+document.querySelector(".about-text").innerHTML = `${accommodationsSummary}`;
+document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
+document.querySelector(".min-price").textContent = `${min_price_eur}`;
+document.querySelector(".villa-location").textContent = `${region}`;
+document.querySelector(".price-notes").innerHTML = `${pricenotes}`;
+document.querySelector(".images").textContent = `Images: ${images}`;
+document.querySelector(".cover").style.backgroundImage = `url(${cover})`;
+console.log('test', property);
+
 
      // Round up the min_price value to the nearest whole number
     const roundedMinPrice = Math.ceil(min_price_eur);
