@@ -259,7 +259,14 @@
                 
 };
 
-         // Function to convert amenity codes to text descriptions
+         
+// Check if the text content of the .villa-city element contains "CY" and replace it with "Cyprus" if it does
+const villaCity = document.querySelector(".villa-city");
+if (villaCity && villaCity.textContent.includes("CY")) {
+    villaCity.textContent = villaCity.textContent.replace("CY", "Cyprus");
+}
+
+// Function to convert amenity codes to text descriptions
 function convertAmenitiesToString(amenities) {
     if (!amenities) {
         return "No amenities available"; // Handle the case when amenities are null or undefined
