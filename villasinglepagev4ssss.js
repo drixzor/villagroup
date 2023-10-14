@@ -376,6 +376,14 @@ function populatePropertyDetails(property) {
     document.querySelector(".cover").style.backgroundImage = `url(${cover})`;    
     console.log('test', property);
 
+        document.querySelectorAll(".villa-city").forEach(element => {
+  if (element.textContent.trim() === 'CY') {
+    element.textContent = 'Cyprus';
+  } else {
+    const [country, city, region] = element.textContent.split(', ');
+    element.textContent = `${country}, ${city}, ${region}`;
+  }
+});
      // Round up the min_price value to the nearest whole number
     const roundedMinPrice = Math.ceil(min_price_eur);
 
