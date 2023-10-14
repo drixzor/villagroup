@@ -352,7 +352,14 @@ function populatePropertyDetails(property) {
     document.querySelector(".bed-number").textContent = `${bedrooms} Bedrooms`;
     document.querySelector(".bath-number").textContent = `${bathrooms} Bathrooms`;
     document.querySelector(".address-line").textContent = `Address Line: ${addressLine}`;
-    document.querySelector(".villa-city").textContent = `${country}, ${city}, ${region}`;
+    // Check if country is "CY" and replace it with "Cyprus" if it is
+if (country === "CY") {
+    country = "Cyprus";
+}
+
+// Update the text content of the .villa-city element
+document.querySelector(".villa-city").textContent = `${country}, ${city}, ${region}`;
+
     document.querySelector(".country").textContent = `Country: ${country}`;
     document.querySelector(".post-code").textContent = `Post Code: ${postCode}`;
     document.querySelector(".name").textContent = `${name}`;
