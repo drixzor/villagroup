@@ -260,11 +260,7 @@
 };
 
          
-// Check if the text content of the .villa-city element contains "CY" and replace it with "Cyprus" if it does
-const villaCity = document.querySelector(".villa-city");
-if (villaCity && villaCity.textContent.includes("CY")) {
-    villaCity.textContent = villaCity.textContent.replace("CY", "Cyprus");
-}
+
 
 // Function to convert amenity codes to text descriptions
 function convertAmenitiesToString(amenities) {
@@ -383,7 +379,12 @@ function populatePropertyDetails(property) {
     document.querySelector(".cover").style.backgroundImage = `url(${cover})`;    
     console.log('test', property);
 
-     // Round up the min_price value to the nearest whole number
+     // Check if the text content of the .villa-city element contains "CY" and replace it with "Cyprus" if it does
+const villaCity = document.querySelector(".villa-city");
+if (villaCity && villaCity.textContent.includes("CY")) {
+    villaCity.textContent = villaCity.textContent.replace("CY", "Cyprus");
+}
+        // Round up the min_price value to the nearest whole number
     const roundedMinPrice = Math.ceil(min_price_eur);
 
     // Set the text for min-price with the rounded value
