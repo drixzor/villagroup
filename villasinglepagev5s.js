@@ -374,15 +374,14 @@ document.querySelector(".images").textContent = `Images: ${images}`;
 document.querySelector(".cover").style.backgroundImage = `url(${cover})`;
 console.log('test', property);
 
-// Handle the "villa-city" elements
-document.querySelectorAll(".villa-city").forEach(element => {
-  if (element.textContent.trim() === 'CY') {
-    element.textContent = 'Cyprus';
-  } else {
-    const [country, city, region] = element.textContent.split(', ');
-    element.textContent = `${country}, ${city}, ${region}`;
-  }
-});
+// Assuming you have a variable called 'country' that contains 'CY'
+if (country === 'CY') {
+  country = 'Cyprus';
+}
+
+// Now you can set the content of the elements
+document.querySelector(".villa-city").textContent = `${country}, ${city}, ${region}`;
+
      // Round up the min_price value to the nearest whole number
     const roundedMinPrice = Math.ceil(min_price_eur);
 
