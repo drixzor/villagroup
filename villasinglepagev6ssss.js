@@ -385,10 +385,11 @@ if (villaCity && villaCity.textContent.includes("CY")) {
     villaCity.textContent = villaCity.textContent.replace("CY", "Cyprus");
 }
         // Round up the min_price value to the nearest whole number
-    const roundedMinPrice = Math.ceil(min_price_eur);
+const roundedMinPrice = Math.ceil(min_price_eur);
 
-    // Set the text for min-price with the rounded value
-    document.querySelector(".min-price").textContent = `€${roundedMinPrice}`;    
+// Set the text for min-price with the rounded and formatted value
+document.querySelector(".min-price").textContent = `€${roundedMinPrice.toLocaleString()}`;
+    
 
     // Check if amenities is not null or undefined before splitting
     if (amenities) {
