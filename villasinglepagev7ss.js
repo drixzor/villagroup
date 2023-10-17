@@ -389,7 +389,7 @@ if (villaCity && villaCity.textContent.includes("CY")) {
 const roundedMinPrice = Math.ceil(min_price_gbp);
 
 // Set the text for min-price with the rounded and formatted value
-document.querySelector(".min-price").textContent = `€${roundedMinPrice.toLocaleString()}`;
+document.querySelector(".min-price").textContent = `£${roundedMinPrice.toLocaleString()}`;
     
 
     // Check if amenities is not null or undefined before splitting
