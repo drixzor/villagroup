@@ -32,12 +32,11 @@ var priceWithoutCents = item.gbp.split(".")[0]; // Get the whole number part
 // Use toLocaleString() to add commas as thousands separators
 priceWithoutCents = parseInt(priceWithoutCents).toLocaleString();
 
-// Set the text for rental-rate based on JSON data (daterange) in EUR
-rentalRate.text(item.daterange + ": £" + priceWithoutCents);
 
 
-          // Set the text for rental-rate based on JSON data (daterange) in EUR
-          rentalRate.text(item.daterange + ": £" + priceWithoutCents);
+
+          // Set the text for rental-rate based on JSON data (daterange) in GBP
+          rentalRate.text(item.daterange + ": £" + priceWithoutCents + " /week");
 
           // Append rentalRate to rentalRateBlock
           rentalRateBlock.append(rentalRate);
