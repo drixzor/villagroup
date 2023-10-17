@@ -340,6 +340,7 @@ function populatePropertyDetails(property) {
         bathrooms,
         propertyType,
         min_price_eur,
+        min_price_gbp,
         pricenotes,
         cover,
         region,
@@ -372,7 +373,7 @@ function populatePropertyDetails(property) {
     document.querySelector(".villa-description").innerHTML = `${accommodationsSummary}`;
     document.querySelector(".about-text").innerHTML = `${accommodationsSummary}`;
     document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
-    document.querySelector(".min-price").textContent = `${min_price_eur}`;
+    document.querySelector(".min-price").textContent = `${min_price_gbp}`;
     document.querySelector(".villa-location").textContent = `${region}`;
     document.querySelector(".price-notes").innerHTML = `${pricenotes}`;    
     document.querySelector(".images").textContent = `Images: ${images}`;
