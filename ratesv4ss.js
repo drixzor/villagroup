@@ -24,22 +24,25 @@ $(document).ready(function() {
         $.each(data, function(index, item) {
           // Create a rental rate block for each item
           var rentalRateBlock = $("<div>").addClass("rental-rate-block");
+          var dateRate = $("<div>").addClass("date-rate");
           var rentalRate = $("<div>").addClass("rental-rate");
+          var week = $("<div>").addClass("week");
 
           // Remove cents and display only the whole number part with commas
-var priceWithoutCents = item.gbp.split(".")[0]; // Get the whole number part
+          var priceWithoutCents = item.gbp.split(".")[0]; // Get the whole number part
 
-// Use toLocaleString() to add commas as thousands separators
-priceWithoutCents = parseInt(priceWithoutCents).toLocaleString();
+          // Use toLocaleString() to add commas as thousands separators
+          priceWithoutCents = parseInt(priceWithoutCents).toLocaleString();
 
+          // Set the text for dateRate, rentalRate, and week based on JSON data
+          dateRate.text(item.daterange);
+          rentalRate.text("£" + priceWithoutCents);
+          week.text("per week");
 
-
-
-          // Set the text for rental-rate based on JSON data (daterange) in GBP
-          rentalRate.text(item.daterange + ": £" + priceWithoutCents + " /week");
-
-          // Append rentalRate to rentalRateBlock
+          // Append dateRate, rentalRate, and week to rentalRateBlock
+          rentalRateBlock.append(dateRate);
           rentalRateBlock.append(rentalRate);
+          rentalRateBlock.append(week);
 
           // Append rentalRateBlock to .rental-rates-grid
           $(".rental-rates-grid").append(rentalRateBlock);
