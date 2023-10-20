@@ -37,7 +37,7 @@ $(document).ready(function() {
           // Set the text for dateRate, rentalRate, and week based on JSON data
           dateRate.text(item.daterange);
           rentalRate.text("£" + priceWithoutCents);
-          week.text("per week");
+          week.text("/wk");
 
           // Append dateRate, rentalRate, and week to rentalRateBlock
           rentalRateBlock.append(dateRate);
