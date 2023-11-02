@@ -29,7 +29,7 @@ $(document).ready(function () {
       var reviewsContainer = $(".reviews-container");
       reviewsContainer.empty();
 
-      var endIndex = showAllReviews ? Math.min(maxReviewsToShow, allReviews.length) : 6;
+      var endIndex = showAllReviews ? allReviews.length : Math.min(maxReviewsToShow, allReviews.length);
 
       for (var i = 0; i < endIndex; i++) {
         var item = allReviews[i];
@@ -66,12 +66,11 @@ $(document).ready(function () {
     }
 
     // Function to update the review count
-function updateReviewCount() {
-    var reviewCount = allReviews.length; // Assuming allReviews contains all the fetched reviews
-    var displayedReviews = showAllReviews ? reviewCount : Math.min(10, reviewCount); // Limit to 10 reviews if showAllReviews is false
-    $(".review-number").text(displayedReviews);
-}
-
+    function updateReviewCount() {
+      var reviewCount = allReviews.length; // Assuming allReviews contains all the fetched reviews
+      var displayedReviews = showAllReviews ? reviewCount : Math.min(10, reviewCount); // Limit to 10 reviews if showAllReviews is false
+      $(".review-number").text(displayedReviews);
+    }
 
     $.getJSON(apiUrl, function (data) {
       if (Array.isArray(data) && data.length > 0) {
@@ -82,7 +81,6 @@ function updateReviewCount() {
 
         // Handle "Show More Reviews" button click
         $(".more-reviews").click(function () {
-          // Toggle between showing all reviews and initial 6 reviews
           showAllReviews = !showAllReviews;
 
           // Render the reviews based on the current state
@@ -93,6 +91,7 @@ function updateReviewCount() {
             $(".more-reviews").text("Show Less Reviews");
           } else {
             $(".more-reviews").text("Show More Reviews");
+            updateReviewCount(); // Update the review count to stay at a maximum of 10
           }
         });
       } else {
