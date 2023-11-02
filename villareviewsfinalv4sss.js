@@ -66,10 +66,12 @@ $(document).ready(function () {
     }
 
     // Function to update the review count
-    function updateReviewCount() {
-      var reviewCount = allReviews.length; // Assuming allReviews contains all the fetched reviews
-      $(".review-number").text(reviewCount);
-    }
+function updateReviewCount() {
+    var reviewCount = allReviews.length; // Assuming allReviews contains all the fetched reviews
+    var displayedReviews = showAllReviews ? reviewCount : Math.min(10, reviewCount); // Limit to 10 reviews if showAllReviews is false
+    $(".review-number").text(displayedReviews);
+}
+
 
     $.getJSON(apiUrl, function (data) {
       if (Array.isArray(data) && data.length > 0) {
