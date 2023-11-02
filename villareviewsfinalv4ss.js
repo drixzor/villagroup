@@ -24,7 +24,7 @@ $(document).ready(function () {
     // Maximum number of reviews to show when in "Show All Reviews" state
     var maxReviewsToShow = 10;
 
-    // Function to render the reviews
+    // Function to render the reviews and update review count
     function renderReviews() {
       var reviewsContainer = $(".reviews-container");
       reviewsContainer.empty();
@@ -60,6 +60,15 @@ $(document).ready(function () {
         // Append the .review-container to the reviews container
         reviewsContainer.append(reviewContainer);
       }
+
+      // Update the review count after rendering reviews
+      updateReviewCount();
+    }
+
+    // Function to update the review count
+    function updateReviewCount() {
+      var reviewCount = allReviews.length; // Assuming allReviews contains all the fetched reviews
+      $(".review-number").text(reviewCount);
     }
 
     $.getJSON(apiUrl, function (data) {
@@ -86,9 +95,11 @@ $(document).ready(function () {
         });
       } else {
         $(".reviews-container").html("No reviews available.");
+        $(".review-number").text("0"); // If there are no reviews, set the review count to 0
       }
     });
   } else {
     $(".reviews-container").html("Property not found.");
+    $(".review-number").text("0"); // If property is not found, set the review count to 0
   }
 });
