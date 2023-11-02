@@ -68,7 +68,7 @@ $(document).ready(function () {
     // Function to update the review count
 function updateReviewCount() {
     var reviewCount = allReviews.length; // Total number of reviews
-    var displayedReviews = showAllReviews ? reviewCount : Math.min(10, reviewCount); // Display all reviews if showAllReviews is true
+    var displayedReviews = showAllReviews ? Math.min(10, reviewCount) : Math.min(10, reviewCount); // Limit the displayed count to 10
 
     $(".review-number").text(displayedReviews);
 }
