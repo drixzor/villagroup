@@ -29,7 +29,7 @@ $(document).ready(function () {
       var reviewsContainer = $(".reviews-container");
       reviewsContainer.empty();
 
-      var endIndex = showAllReviews ? allReviews.length : Math.min(maxReviewsToShow, allReviews.length);
+      var endIndex = showAllReviews ? Math.min(maxReviewsToShow, allReviews.length) : 6;
 
       for (var i = 0; i < endIndex; i++) {
         var item = allReviews[i];
@@ -66,27 +66,42 @@ $(document).ready(function () {
     }
 
     // Function to update the review count
-    function updateReviewCount() {
-        var reviewCount = allReviews.length;
-        var displayedReviews = showAllReviews ? reviewCount : Math.min(10, reviewCount);
-        $(".review-number").text(displayedReviews);
-    }
+function updateReviewCount() {
+    var reviewCount = allReviews.length; // Total number of reviews
+    var displayedReviews = showAllReviews ? reviewCount : Math.min(10, reviewCount); // Display all reviews if showAllReviews is true
+
+    $(".review-number").text(displayedReviews);
+}
 
     $.getJSON(apiUrl, function (data) {
-        if (Array.isArray(data) && data.length > 0) {
-            allReviews = data;
-            renderReviews();
-            updateReviewCount(); // Update the review count after initial render
+      if (Array.isArray(data) && data.length > 0) {
+        allReviews = data;
 
-            $(".more-reviews").click(function () {
-                showAllReviews = !showAllReviews;
-                renderReviews();
-                updateReviewCount(); // Update the review count after clicking "Show More Reviews"
-                $(".more-reviews").text(showAllReviews ? "Show Less Reviews" : "Show More Reviews");
-            });
-        } else {
-            $(".reviews-container").html("No reviews available.");
-            $(".review-number").text("0");
-        }
+        // Show the initial set of reviews
+        renderReviews();
+
+        // Handle "Show More Reviews" button click
+        $(".more-reviews").click(function () {
+          // Toggle between showing all reviews and initial 6 reviews
+          showAllReviews = !showAllReviews;
+
+          // Render the reviews based on the current state
+          renderReviews();
+
+          // Update the button text based on the current state
+          if (showAllReviews) {
+            $(".more-reviews").text("Show Less Reviews");
+          } else {
+            $(".more-reviews").text("Show More Reviews");
+          }
+        });
+      } else {
+        $(".reviews-container").html("No reviews available.");
+        $(".review-number").text("0"); // If there are no reviews, set the review count to 0
+      }
     });
+  } else {
+    $(".reviews-container").html("Property not found.");
+    $(".review-number").text("0"); // If property is not found, set the review count to 0
+  }
 });
