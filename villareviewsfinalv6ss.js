@@ -1,6 +1,5 @@
 $(document).ready(function () {
   function getUrlParameter(name) {
-    // Function to get URL parameter by name
     var url = new URL(window.location.href);
     return url.searchParams.get(name);
   }
@@ -12,15 +11,11 @@ $(document).ready(function () {
     var allReviews = [];
     var showAllReviews = false;
 
-    function updateReviewCount() {
-      $(".review-number").text(allReviews.length);
-    }
-
     function renderReviews() {
       var reviewsContainer = $(".reviews-container");
       reviewsContainer.empty();
 
-      var endIndex = showAllReviews ? allReviews.length : 6; // Display all reviews or just 6
+      var endIndex = showAllReviews ? allReviews.length : 6;
 
       for (var i = 0; i < endIndex; i++) {
         var item = allReviews[i];
@@ -48,7 +43,7 @@ $(document).ready(function () {
         reviewsContainer.append(reviewContainer);
       }
 
-      updateReviewCount();
+      $(".review-number").text(allReviews.length); // Update review count here
     }
 
     $.getJSON(apiUrl, function (data) {
@@ -68,7 +63,7 @@ $(document).ready(function () {
         });
       } else {
         $(".reviews-container").html("No reviews available.");
-        updateReviewCount(); // Update review count even when there are no reviews
+        $(".review-number").text("0"); // Update review count when no reviews are available
       }
     });
   } else {
