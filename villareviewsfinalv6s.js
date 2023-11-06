@@ -1,25 +1,19 @@
 $(document).ready(function () {
   function getUrlParameter(name) {
     // Function to get URL parameter by name
-    var url = window.location.href;
-    name = name.replace(/[\[\]]/g, '\\$&');
-    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-    var results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    var url = new URL(window.location.href);
+    return url.searchParams.get(name);
   }
 
   var propertyId = parseInt(getUrlParameter('id'));
-  if (propertyId !== null) {
+  if (!isNaN(propertyId)) {
     var apiUrl = "https://spapi.weboscy.com/testimonial?id=" + propertyId;
 
     var allReviews = [];
     var showAllReviews = false;
 
     function updateReviewCount() {
-      var reviewCount = allReviews.length; // Total number of reviews
-      $(".review-number").text(reviewCount);
+      $(".review-number").text(allReviews.length);
     }
 
     function renderReviews() {
