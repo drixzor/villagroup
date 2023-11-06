@@ -76,9 +76,8 @@ $(document).ready(function () {
         // Show the initial set of reviews
         renderReviews();
 
-        // Handle "Show More Reviews" button click
-        $(".more-reviews").click(function () {
-          // Toggle between showing all reviews and initial 6 reviews
+        // Handle "Show More Reviews" button click using event delegation
+        $(document).on("click", ".more-reviews", function () {
           showAllReviews = !showAllReviews;
 
           // Render the reviews based on the current state
