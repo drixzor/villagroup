@@ -21,20 +21,23 @@ $(document).ready(function () {
     // Global variables to track the current state
     var showAllReviews = false;
 
-    // Maximum number of reviews to show when in "Show All Reviews" state
-    var maxReviewsToShow = 10;
+    // Function to update the review count
+    function updateReviewCount() {
+      var reviewCount = allReviews.length; // Total number of reviews
+      $(".review-number").text(reviewCount);
+    }
 
     // Function to render the reviews and update review count
     function renderReviews() {
       var reviewsContainer = $(".reviews-container");
       reviewsContainer.empty();
 
-      var endIndex = showAllReviews ? Math.min(maxReviewsToShow, allReviews.length) : 6;
+      var endIndex = Math.min(6, allReviews.length); // Display only 6 reviews initially
 
       for (var i = 0; i < endIndex; i++) {
         var item = allReviews[i];
 
-        // Create a div for each review
+       // Create a div for each review
         var reviewContainer = $("<div>").addClass("review-container");
 
         var starWrapper = $("<div>").addClass("star-wrapper");
@@ -61,18 +64,10 @@ $(document).ready(function () {
         reviewsContainer.append(reviewContainer);
       }
 
+
       // Update the review count after rendering reviews
       updateReviewCount();
     }
-
-    // Function to update the review count
-function updateReviewCount() {
-  var reviewCount = allReviews.length; // Total number of reviews
-  var displayedReviews = showAllReviews ? reviewCount : Math.min(reviewCount, 10); // Display all reviews if 'showAllReviews' is true, else limit to 10
-
-  $(".review-number").text(displayedReviews);
-}
-
 
     $.getJSON(apiUrl, function (data) {
       if (Array.isArray(data) && data.length > 0) {
