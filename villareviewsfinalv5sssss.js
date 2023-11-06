@@ -1,6 +1,6 @@
 $(document).ready(function () {
-  // Function to get URL parameter by name
   function getUrlParameter(name) {
+    // Function to get URL parameter by name
     var url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
@@ -10,34 +10,27 @@ $(document).ready(function () {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 
-  // Extract the dynamic ID from the URL and parse it as an integer
   var propertyId = parseInt(getUrlParameter('id'));
   if (propertyId !== null) {
     var apiUrl = "https://spapi.weboscy.com/testimonial?id=" + propertyId;
 
-    // Create an array to store all reviews
     var allReviews = [];
-
-    // Global variables to track the current state
     var showAllReviews = false;
 
-    // Function to update the review count
     function updateReviewCount() {
       var reviewCount = allReviews.length; // Total number of reviews
       $(".review-number").text(reviewCount);
     }
 
-    // Function to render the reviews and update review count
     function renderReviews() {
       var reviewsContainer = $(".reviews-container");
       reviewsContainer.empty();
 
-      var endIndex = Math.min(6, allReviews.length); // Display only 6 reviews initially
+      var endIndex = showAllReviews ? allReviews.length : 6; // Display all reviews or just 6
 
       for (var i = 0; i < endIndex; i++) {
         var item = allReviews[i];
 
-       // Create a div for each review
         var reviewContainer = $("<div>").addClass("review-container");
 
         var starWrapper = $("<div>").addClass("star-wrapper");
@@ -57,33 +50,22 @@ $(document).ready(function () {
         var reviewName = $("<div>").addClass("review-name").text(item.guest);
         var reviewDate = $("<div>").addClass("review-date").text(item.date);
 
-        // Append review content to the .review-container
         reviewContainer.append(starWrapper, reviewText, reviewName, reviewDate);
-
-        // Append the .review-container to the reviews container
         reviewsContainer.append(reviewContainer);
       }
 
-
-      // Update the review count after rendering reviews
       updateReviewCount();
     }
 
     $.getJSON(apiUrl, function (data) {
       if (Array.isArray(data) && data.length > 0) {
         allReviews = data;
-
-        // Show the initial set of reviews
         renderReviews();
 
-        // Handle "Show More Reviews" button click using event delegation
-        $(document).on("click", ".more-reviews", function () {
+        $(".more-reviews").click(function () {
           showAllReviews = !showAllReviews;
-
-          // Render the reviews based on the current state
           renderReviews();
 
-          // Update the button text based on the current state
           if (showAllReviews) {
             $(".more-reviews").text("Show Less Reviews");
           } else {
@@ -92,11 +74,11 @@ $(document).ready(function () {
         });
       } else {
         $(".reviews-container").html("No reviews available.");
-        $(".review-number").text("0"); // If there are no reviews, set the review count to 0
+        $(".review-number").text("0");
       }
     });
   } else {
     $(".reviews-container").html("Property not found.");
-    $(".review-number").text("0"); // If property is not found, set the review count to 0
+    $(".review-number").text("0");
   }
 });
