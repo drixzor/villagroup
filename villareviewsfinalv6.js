@@ -74,7 +74,7 @@ $(document).ready(function () {
         });
       } else {
         $(".reviews-container").html("No reviews available.");
-        $(".review-number").text("0");
+        updateReviewCount(); // Update review count even when there are no reviews
       }
     });
   } else {
