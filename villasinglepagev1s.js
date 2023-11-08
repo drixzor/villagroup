@@ -274,8 +274,15 @@ function convertAmenitiesToString(amenities) {
 
 document.addEventListener("DOMContentLoaded", function () {
     const url = new URL(window.location.href);
-    const propertyId = url.searchParams.get("id");
-    fetchPropertyData(propertyId);
+    const queryString = url.search;
+    const urlParams = new URLSearchParams(queryString);
+    const propertyId = urlParams.get("id");
+    
+    if (propertyId) {
+        fetchPropertyData(propertyId);
+    } else {
+        console.log("No property ID found in the URL");
+    }
 });
 
 async function fetchPropertyData(propertyId) {
