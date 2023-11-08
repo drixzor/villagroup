@@ -272,10 +272,17 @@ function convertAmenitiesToString(amenities) {
     return amenityDescriptions.join(', ');
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+ddocument.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search); // Get the query parameters
-    const propertyId = urlParams.get('id'); // Extract the 'id' parameter from the query
-    fetchPropertyData(propertyId);
+    const urlPath = urlParams.get('id'); // Extract the value of the 'id' parameter from the query string
+
+    // Check if the ID is present in the URL and construct the API URL accordingly
+    if (urlPath) {
+        const apiUrl = "https://spapi.weboscy.com/property?id=" + urlPath;
+        fetchPropertyData(urlPath); // Pass the extracted ID to the fetch function
+    } else {
+        console.log("Property ID not found in the URL");
+    }
 });
 
 
