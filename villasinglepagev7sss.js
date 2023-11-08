@@ -474,9 +474,9 @@ imagesArray.forEach((image, index) => {
 
     const galleryGrid = document.querySelector('.gallery-grid');
 
-    // Check if imagesArray has at least 4 images
-    if (imagesArray.length >= 4) {
-        for (let i = 0; i < 4; i++) {
+    // Check if imagesArray has at least 6 images
+    if (imagesArray.length >= 6) {
+        for (let i = 0; i < 6; i++) {
             const imageElement = document.createElement('img');
             imageElement.className = 'gallery-image';
             imageElement.src = imagesArray[i];
