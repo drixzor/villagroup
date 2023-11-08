@@ -273,11 +273,11 @@ function convertAmenitiesToString(amenities) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const urlPath = window.location.pathname; // Get the URL path
-    const pathParts = urlPath.split('-'); // Split the path by '-'
-    const propertyId = pathParts[pathParts.length - 1]; // Extract the last part as the propertyId
+    const urlParams = new URLSearchParams(window.location.search); // Get the query parameters
+    const propertyId = urlParams.get('id'); // Extract the 'id' parameter from the query
     fetchPropertyData(propertyId);
 });
+
 
 
 
