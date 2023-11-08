@@ -275,8 +275,8 @@ function convertAmenitiesToString(amenities) {
 document.addEventListener("DOMContentLoaded", function () {
     const url = window.location.pathname;
 
-    // Extract the property ID using a regular expression
-    const propertyIdMatch = url.match(/-([0-9]+)$/);
+    // Extract the property ID using a regular expression to match the last set of digits after the last hyphen "-"
+    const propertyIdMatch = url.match(/-(\d+)(?!.*-)/);
     const propertyId = propertyIdMatch ? propertyIdMatch[1] : null;
 
     if (propertyId) {
@@ -285,6 +285,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Property ID not found in the URL");
     }
 });
+
 
 
 async function fetchPropertyData(propertyId) {
