@@ -280,6 +280,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+
+
 async function fetchPropertyData(propertyId) {
     const apiUrl = "https://spapi.weboscy.com/property?id=" + propertyId;
 
