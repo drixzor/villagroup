@@ -273,8 +273,11 @@ function convertAmenitiesToString(amenities) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const urlParts = window.location.pathname.split('-');
-    const propertyId = urlParts[urlParts.length - 1];
+    const url = window.location.pathname;
+
+    // Extract the property ID using a regular expression
+    const propertyIdMatch = url.match(/-([0-9]+)$/);
+    const propertyId = propertyIdMatch ? propertyIdMatch[1] : null;
 
     if (propertyId) {
         fetchPropertyData(propertyId);
