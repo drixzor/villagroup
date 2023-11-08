@@ -273,9 +273,8 @@ function convertAmenitiesToString(amenities) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const url = new URL(window.location.href);
-    const queryString = url.search;
-    const urlParams = new URLSearchParams(queryString);
+    const url = window.location.href;
+    const urlParams = new URLSearchParams(url.split('?').pop());
     const propertyId = urlParams.get("id");
     
     if (propertyId) {
