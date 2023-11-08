@@ -273,19 +273,16 @@ function convertAmenitiesToString(amenities) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const urlParams = new URLSearchParams(window.location.search);
-    const pathName = window.location.pathname;
+    const urlParts = window.location.pathname.split('-');
+    const propertyId = urlParts[urlParts.length - 1];
 
-    // Split the path by '-' and get the last item as the ID
-    const pathParts = pathName.split('-');
-    const propertyId = pathParts[pathParts.length - 1];
-
-    // Alternatively, if the ID is always in the query parameter 'id'
-    const urlPropertyId = urlParams.get('id');
-
-    // Choose the appropriate ID depending on your URL structure
-    const finalPropertyId = propertyId;
+    if (propertyId) {
+        fetchPropertyData(propertyId);
+    } else {
+        console.log("Property ID not found in the URL");
+    }
 });
+
 
 async function fetchPropertyData(propertyId) {
     const apiUrl = "https://spapi.weboscy.com/property?id=" + propertyId;
