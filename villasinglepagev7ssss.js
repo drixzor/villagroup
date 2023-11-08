@@ -273,10 +273,12 @@ function convertAmenitiesToString(amenities) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const url = new URL(window.location.href);
-    const propertyId = url.searchParams.get("id");
+    const urlPath = window.location.pathname; // Get the URL path
+    const pathParts = urlPath.split('-'); // Split the path by '-'
+    const propertyId = pathParts[pathParts.length - 1]; // Extract the last part as the propertyId
     fetchPropertyData(propertyId);
 });
+
 
 async function fetchPropertyData(propertyId) {
     const apiUrl = "https://spapi.weboscy.com/property?id=" + propertyId;
