@@ -273,20 +273,10 @@ function convertAmenitiesToString(amenities) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const url = window.location.pathname;
-
-    // Extract the property ID using a regular expression to match the last set of digits after the last hyphen "-"
-    const propertyIdMatch = url.match(/-(\d+)(?!.*-)/);
-    const propertyId = propertyIdMatch ? propertyIdMatch[1] : null;
-
-    if (propertyId) {
-        fetchPropertyData(propertyId);
-    } else {
-        console.log("Property ID not found in the URL");
-    }
+    const url = new URL(window.location.href);
+    const propertyId = url.searchParams.get("id");
+    fetchPropertyData(propertyId);
 });
-
-
 
 async function fetchPropertyData(propertyId) {
     const apiUrl = "https://spapi.weboscy.com/property?id=" + propertyId;
