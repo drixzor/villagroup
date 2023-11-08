@@ -1,7 +1,15 @@
 $(document).ready(function () {
   function getUrlParameter(name) {
-    var url = new URL(window.location.href);
-    return url.searchParams.get(name);
+    const urlParams = new URLSearchParams(window.location.search);
+
+    // Iterate through all the query parameters
+    for (const param of urlParams) {
+      if (param[0].endsWith(name)) {
+        return param[1]; // Return the value of the parameter
+      }
+    }
+
+    return null; // Return null if the parameter is not found
   }
 
   var propertyId = parseInt(getUrlParameter('id'));
