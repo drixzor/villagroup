@@ -491,4 +491,24 @@ imagesArray.forEach((image, index) => {
     } else {
         console.log('Not enough images available for the gallery.');
     }
+
+    // Update title tag
+    document.title = `Luxury Holiday Villa ${property.propertyId} in ${property.region}, ${property.city}, ${property.country}`;
+
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+        const maxLength = 145;
+        const truncatedSummary = accommodationsSummary.length > maxLength ?
+            accommodationsSummary.substring(0, maxLength - 3) + '...' :
+            accommodationsSummary;
+        metaDescription.content = truncatedSummary;
+    }
+
+    // Update graph image
+    const graphImage = document.querySelector('.graph-image');
+    if (graphImage && imagesArray.length > 0) {
+        graphImage.src = imagesArray[0];
+        graphImage.alt = `Rent a luxury villa in ${property.region}, ${property.city}, ${property.country}`;
+    }
 }
