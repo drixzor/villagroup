@@ -493,7 +493,7 @@ imagesArray.forEach((image, index) => {
     }
 
     // Update title tag
-    document.title = `Luxury Holiday Villa ${property.propertyId} in ${property.region}, ${property.city}, ${property.country}`;
+    document.title = `Luxury Holiday Villa ${property.propertyId} in ${property.region}, ${property.city}, Cyprus`;
 
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -509,6 +509,6 @@ imagesArray.forEach((image, index) => {
     const graphImage = document.querySelector('.graph-image');
     if (graphImage && imagesArray.length > 0) {
         graphImage.src = imagesArray[0];
-        graphImage.alt = `Rent a luxury villa in ${property.region}, ${property.city}, ${property.country}`;
+        graphImage.alt = `Rent a luxury villa in ${property.region}, ${property.city}, Cyprus`;
     }
 }
