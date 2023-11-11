@@ -492,23 +492,51 @@ imagesArray.forEach((image, index) => {
         console.log('Not enough images available for the gallery.');
     }
 
-    // Update title tag
-    document.title = `Luxury Holiday Villa ${property.propertyId} in ${property.region}, ${property.city}, Cyprus`;
+   // Update title tag
+document.title = `Luxury Holiday Villa ${property.propertyId} in ${property.region}, ${property.city}, Cyprus`;
 
-    // Update meta description
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-        const maxLength = 145;
-        const truncatedSummary = accommodationsSummary.length > maxLength ?
-            accommodationsSummary.substring(0, maxLength - 3) + '...' :
-            accommodationsSummary;
-        metaDescription.content = truncatedSummary;
-    }
+// Update meta description
+const metaDescription = document.querySelector('meta[name="description"]');
+if (metaDescription) {
+    const maxLength = 145;
+    const truncatedSummary = accommodationsSummary.length > maxLength ?
+        accommodationsSummary.substring(0, maxLength - 3) + '...' :
+        accommodationsSummary;
+    metaDescription.content = truncatedSummary;
+}
 
-    // Update graph image
-    const graphImage = document.querySelector('.graph-image');
-    if (graphImage && imagesArray.length > 0) {
-        graphImage.src = imagesArray[0];
-        graphImage.alt = `Rent a luxury villa in ${property.region}, ${property.city}, Cyprus`;
-    }
+// Update graph image
+const graphImage = document.querySelector('.graph-image');
+if (graphImage && imagesArray.length > 0) {
+    graphImage.src = imagesArray[0];
+    graphImage.alt = `Rent a luxury villa in ${property.region}, ${property.city}, Cyprus`;
+
+    // Add Open Graph meta tags dynamically
+    const headElement = document.head;
+
+    // Create og:title meta tag
+    const ogTitleTag = document.createElement('meta');
+    ogTitleTag.setAttribute('property', 'og:title');
+    ogTitleTag.content = `Luxury Holiday Villa ${property.propertyId} in ${property.region}, ${property.city}, Cyprus`;
+    headElement.appendChild(ogTitleTag);
+
+    // Create og:description meta tag
+    const ogDescriptionTag = document.createElement('meta');
+    ogDescriptionTag.setAttribute('property', 'og:description');
+    ogDescriptionTag.content = truncatedSummary;
+    headElement.appendChild(ogDescriptionTag);
+
+    // Create og:image meta tag
+    const ogImageTag = document.createElement('meta');
+    ogImageTag.setAttribute('property', 'og:image');
+    ogImageTag.content = imagesArray[0];
+    headElement.appendChild(ogImageTag);
+
+    // Create og:url meta tag
+    const ogUrlTag = document.createElement('meta');
+    ogUrlTag.setAttribute('property', 'og:url');
+    ogUrlTag.content = window.location.href;
+    headElement.appendChild(ogUrlTag);
+}
+
 }
