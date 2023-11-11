@@ -365,7 +365,7 @@ function populatePropertyDetails(property) {
     document.querySelector(".villa-city").textContent = `${country}, ${city}, ${region}`;
     document.querySelector(".country").textContent = `Country: ${country}`;
     document.querySelector(".post-code").textContent = `Post Code: ${postCode}`;
-    document.querySelector(".property-id").textContent = `${name}`;
+    document.querySelector(".name").textContent = `Villa ${propertyId}`;
     document.querySelector(".accepted-payment-forms").textContent = `Accepted Payment Forms: ${acceptedPaymentForms}`;
     document.querySelector(".cancellation-policy").textContent = `Cancellation Policy: ${cancellationPolicy}`;
     document.querySelector(".check-in-times").textContent = `Check-in Time: ${checkInTime}`;
