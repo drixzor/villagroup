@@ -53,6 +53,13 @@ $(document).ready(function () {
       }
 
       $(".review-number").text(allReviews.length); // Update review count here
+
+      // Hide the more-reviews element if there are no more than 6 reviews
+      if (allReviews.length <= initialReviewsToShow) {
+        $(".more-reviews").hide();
+      } else {
+        $(".more-reviews").show();
+      }
     }
 
     function updateShowMoreText() {
@@ -77,11 +84,13 @@ $(document).ready(function () {
       } else {
         $(".reviews-container").html("No reviews available.");
         $(".review-number").text("0"); // Update review count when no reviews are available
+        $(".more-reviews").hide(); // Hide the more-reviews element when no reviews are available
       }
     });
 
   } else {
     $(".reviews-container").html("Property not found.");
     $(".review-number").text("0");
+    $(".more-reviews").hide(); // Hide the more-reviews element when the property is not found
   }
 });
