@@ -200,8 +200,8 @@ function setButtonURL(locationText) {
   const url = '/locations/' + hyphenatedText.toLowerCase(); // Convert to lowercase
 
   descriptionButton.addEventListener('click', () => {
-    window.location.href = url; // Redirect the user to the URL
-  });
+  window.location.href = url; // Redirect the user to the URL
+}, { passive: true });
 }
 
 // Function to set the image for the .location-image div
