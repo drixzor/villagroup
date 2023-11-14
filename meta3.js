@@ -26,20 +26,16 @@ async function fetchAndPopulatePropertyData(propertyId) {
             console.log("Property data retrieved:", matchingProperty);
 
             // Check if metadata has been updated for this property
-            if (matchingProperty) {
-    console.log("Property data retrieved:", matchingProperty);
-
-    // Check if metadata has been updated for this property
-    if (!metadataUpdated) {
-        populatePropertyDetails(matchingProperty);
-        updateMetadata(matchingProperty);
-        metadataUpdated = true;
-    } else {
-        console.log("Metadata already updated for this property.");
-    }
-} else {
-    console.log("Property not found.");
-}
+            if (!metadataUpdated) {
+                populatePropertyDetails(matchingProperty);
+                updateMetadata(matchingProperty);
+                metadataUpdated = true;
+            } else {
+                console.log("Metadata already updated for this property.");
+            }
+        } else {
+            console.log("Property not found.");
+        }
 
     } catch (error) {
         console.error("Error:", error);
@@ -140,4 +136,3 @@ function updateMetadata(property) {
         twitterImage: twitterImage.content
     });
 }
-
