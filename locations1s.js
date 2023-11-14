@@ -184,59 +184,72 @@ const locationData = {
 
 
     // Function to update the description in the HTML
-    function updateDescription(locationText) {
-      const description = document.querySelector('.description');
+function updateDescription(locationText) {
+  const description = document.querySelector('.description');
 
-      if (locationData[locationText] && description) {
-        description.textContent = locationData[locationText].description;
-      }
-    }
+  if (locationData[locationText] && description) {
+    description.textContent = locationData[locationText].description;
+  }
+}
 
-    // Function to set the URL for the "Read More" button
-    function setButtonURL(locationText) {
-      const descriptionButton = document.querySelector('.description-button');
+// Function to set the URL for the "Read More" button
+function setButtonURL(locationText) {
+  const descriptionButton = document.querySelector('.description-button');
 
-      const hyphenatedText = locationText.replace(/\s+/g, '-'); // Replace spaces with hyphens
-const url = '/locations/' + hyphenatedText.toLowerCase(); // Convert to lowercase
+  const hyphenatedText = locationText.replace(/\s+/g, '-'); // Replace spaces with hyphens
+  const url = '/locations/' + hyphenatedText.toLowerCase(); // Convert to lowercase
 
-      descriptionButton.addEventListener('click', () => {
-        window.location.href = url; // Redirect the user to the URL
-      });
-    }
+  descriptionButton.addEventListener('click', () => {
+    window.location.href = url; // Redirect the user to the URL
+  });
+}
 
-    // Function to set the image for the .location-image div
-    function setLocationImage(locationText) {
-      const locationImageData = locationData[locationText];
-      const locationImageDiv = document.querySelector('.location-image');
+// Function to set the image for the .location-image div
+function setLocationImage(locationText) {
+  const locationImageData = locationData[locationText];
+  const locationImageDiv = document.querySelector('.location-image');
 
-      if (locationImageData && locationImageDiv) {
-        const locationImage = new Image();
-        locationImage.src = locationImageData.imageSrc;
-        locationImage.alt = locationText; // You can set an alt attribute for accessibility
+  if (locationImageData && locationImageDiv) {
+    const locationImage = new Image();
+    locationImage.src = locationImageData.imageSrc;
+    locationImage.alt = locationText; // You can set an alt attribute for accessibility
 
-        // Set the image to 100% width and height
-        locationImage.style.width = '100%';
-        locationImage.style.height = '100%';
+    // Set the image to 100% width and height
+    locationImage.style.width = '100%';
+    locationImage.style.height = '100%';
 
-        // Replace the content of the .location-image div with the image
-        locationImageDiv.innerHTML = '';
-        locationImageDiv.appendChild(locationImage);
-      }
-    }
+    // Replace the content of the .location-image div with the image
+    locationImageDiv.innerHTML = '';
+    locationImageDiv.appendChild(locationImage);
+  }
+}
 
-    // Wait for the villa location text to be populated and then call the functions
-    window.addEventListener('DOMContentLoaded', () => {
-      const villaLocation = document.querySelector('.villa-location');
-      villaLocation.addEventListener('DOMSubtreeModified', () => {
-        const locationText = villaLocation.textContent.trim();
-        setButtonURL(locationText);
-        setLocationImage(locationText);
-        updateDescription(locationText);
-      });
+// Callback function for MutationObserver
+function handleMutation(mutationsList) {
+  const villaLocation = document.querySelector('.villa-location');
+  const locationText = villaLocation.textContent.trim();
 
-      // Initial call to set the URL, set the image, and update the description
-      const locationText = villaLocation.textContent.trim();
-      setButtonURL(locationText);
-      setLocationImage(locationText);
-      updateDescription(locationText);
-    });
+  setButtonURL(locationText);
+  setLocationImage(locationText);
+  updateDescription(locationText);
+}
+
+// Wait for the villa location text to be populated and then call the functions using MutationObserver
+window.addEventListener('DOMContentLoaded', () => {
+  const villaLocation = document.querySelector('.villa-location');
+
+  // Create a MutationObserver instance
+  const observer = new MutationObserver(handleMutation);
+
+  // Configure the observer to watch for changes in the subtree
+  const observerConfig = { subtree: true, childList: true };
+
+  // Start observing the target node for configured mutations
+  observer.observe(villaLocation, observerConfig);
+
+  // Initial call to set the URL, set the image, and update the description
+  const locationText = villaLocation.textContent.trim();
+  setButtonURL(locationText);
+  setLocationImage(locationText);
+  updateDescription(locationText);
+});
