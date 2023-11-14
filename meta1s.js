@@ -64,4 +64,4 @@ function updateMetadata(property) {
     // Use the first image from the images array
     graphImage.content = images.split(',')[0].trim();
 }
-}
+
