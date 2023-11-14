@@ -51,11 +51,16 @@ function updateMetadata(property) {
         country,
     } = property;
 
-    // Update title tag
-    document.getElementById('pageTitle').innerText = `Luxury Holiday Villa`;
+    // Create title element
+    const titleElement = document.getElementById('pageTitle');
+    if (titleElement) {
+        titleElement.innerText = `Luxury Holiday Villa ${propertyId} in ${region}, ${city}, ${country}`;
+    } else {
+        console.error("Title element not found.");
+    }
 
     // Log the updated metadata
     console.log("Updated Metadata:", {
-        title: document.getElementById('pageTitle').innerText,
+        title: titleElement ? titleElement.innerText : "Title element not found",
     });
 }
