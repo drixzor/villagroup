@@ -262,42 +262,38 @@
          
 
 
-// Function to convert amenity codes to text descriptions
-function convertAmenitiesToString(amenities) {
-    if (!amenities) {
-        return "No amenities available"; // Handle the case when amenities are null or undefined
-    }
-    const amenityCodes = amenities.split(',').map(code => code.trim());
-    const amenityDescriptions = amenityCodes.map(code => amenityMappings[code] ? amenityMappings[code].description : code); // Use the mapping or the code itself if not found
-    return amenityDescriptions.join(', ');
-}
+// Update title tag
+            document.title = `Luxury Holiday Villa ${propertyId} in ${matchingProperty.region}, ${matchingProperty.city}, ${matchingProperty.country}`;
 
-document.addEventListener("DOMContentLoaded", function () {
-    const url = window.location.href;
-    const urlParams = new URLSearchParams(url.split('?').pop());
-    const propertyId = urlParams.get("id");
-    
-    if (propertyId) {
-        fetchPropertyData(propertyId);
-    } else {
-        console.log("No property ID found in the URL");
-    }
-});
+            // Update meta description
+            const metaDescriptionTag = document.querySelector('meta[name="description"]');
+            const truncatedDescription = matchingProperty.accommodationsSummary.length > 145
+                ? matchingProperty.accommodationsSummary.substring(0, 145) + '...'
+                : matchingProperty.accommodationsSummary;
 
-async function fetchPropertyData(propertyId) {
-    const apiUrl = "https://spapi.weboscy.com/property?id=" + propertyId;
-
-    try {
-        const matchingProperty = await fetchData(apiUrl);
-
-        if (matchingProperty) {
-            populatePropertyDetails(matchingProperty);
-            // Update the data-calendar-property-id attribute with property ID for the widget
-            var bookingWidget = document.getElementById('booking-widget-container');
-            if (bookingWidget) {
-                bookingWidget.innerHTML = `<div data-calendar-key="306CF20FB9002DA05908D846CACD52D722130AB6F33ED392045C5EE6D0A371C5D639889CDCBFD28CD218A78ED8791E35" data-calendar-property-id="${matchingProperty.propertyId}">Your widget will appear here.</div>`;
+            if (metaDescriptionTag) {
+                metaDescriptionTag.setAttribute('content', truncatedDescription);
+            } else {
+                // If meta description tag doesn't exist, create and append it to the head
+                const newMetaTag = document.createElement('meta');
+                newMetaTag.name = 'description';
+                newMetaTag.content = truncatedDescription;
+                document.head.appendChild(newMetaTag);
             }
 
+            // Update og:image meta tag with the URL of the first image
+            const ogImageTag = document.querySelector('meta[property="og:image"]');
+            const firstImageUrl = matchingProperty.images.length > 0 ? matchingProperty.images[0] : '';
+
+            if (ogImageTag) {
+                ogImageTag.setAttribute('content', firstImageUrl);
+            } else {
+                // If og:image meta tag doesn't exist, create and append it to the head
+                const newOgImageTag = document.createElement('meta');
+                newOgImageTag.property = 'og:image';
+                newOgImageTag.content = firstImageUrl;
+                document.head.appendChild(newOgImageTag);
+            }
         } else {
             console.log("Property not found.");
         }
@@ -306,190 +302,4 @@ async function fetchPropertyData(propertyId) {
     }
 }
 
-async function fetchData(url) {
-    const response = await fetch(url);
-    if (!response.ok) {
-        throw new Error(`Failed to fetch data (HTTP ${response.status})`);
-    }
-    return response.json();
-}
-
-function populatePropertyDetails(property) {
-    const {
-        id,
-        propertyId,
-        status,
-        maximumOccupancyGuests,
-        bedrooms,
-        addressLine,
-        city,
-        country,
-        postCode,
-        latitude,
-        longitude,
-        name,
-        acceptedPaymentForms,
-        cancellationPolicy,
-        checkInTime,
-        checkOutTime,
-        childrenAllowed,
-        maximumOccupancyAdults,
-        maximumOccupancyChildren,
-        petsAllowed,
-        smokingAllowed,
-        subcaption,
-        description,
-        summary,
-        changeover,
-        images,
-        amenities,
-        bathrooms,
-        propertyType,
-        min_price_eur,
-        min_price_gbp,
-        pricenotes,
-        cover,
-        region,
-        accommodationsSummary
-    } = property;
-
-     // Populate HTML elements
-    document.querySelector(".villa-id").textContent = `Villa ${id}`;
-    document.querySelector(".villa-id").textContent = `Villa ${id}`;
-    document.querySelector(".property-id").textContent = `Villa ${propertyId}`;
-    document.querySelector(".status").textContent = `Status: ${status}`;
-    document.querySelector(".guest-number").textContent = `Up to ${maximumOccupancyGuests} Guests`;
-    document.querySelector(".bed-number").textContent = `${bedrooms} Bedrooms`;
-    document.querySelector(".bath-number").textContent = `${bathrooms} Bathrooms`;
-    document.querySelector(".address-line").textContent = `Address Line: ${addressLine}`;
-    document.querySelector(".villa-city").textContent = `${country}, ${city}, ${region}`;
-    document.querySelector(".country").textContent = `Country: ${country}`;
-    document.querySelector(".post-code").textContent = `Post Code: ${postCode}`;
-    document.querySelector(".name").textContent = `Villa ${propertyId}`;
-    document.querySelector(".accepted-payment-forms").textContent = `Accepted Payment Forms: ${acceptedPaymentForms}`;
-    document.querySelector(".cancellation-policy").textContent = `Cancellation Policy: ${cancellationPolicy}`;
-    document.querySelector(".check-in-times").textContent = `Check-in Time: ${checkInTime}`;
-    document.querySelector(".check-out-time").textContent = `Check-out Time: ${checkOutTime}`;
-    document.querySelector(".children-allowed").textContent = `Children Allowed: ${childrenAllowed}`;
-    document.querySelector(".maximum-occupancy-adults").textContent = `Maximum Occupancy Adults: ${maximumOccupancyAdults}`;
-    document.querySelector(".maximum-occupancy-children").textContent = `Maximum Occupancy Children: ${maximumOccupancyChildren}`;
-    document.querySelector(".pets-allowed").textContent = `Pets Allowed: ${petsAllowed}`;
-    document.querySelector(".smoking-allowed").textContent = `Smoking Allowed: ${smokingAllowed}`;
-    document.querySelector(".subcaption").textContent = `Subcaption: ${subcaption}`;
-    document.querySelector(".villa-description").innerHTML = `${accommodationsSummary}`;
-    document.querySelector(".about-text").innerHTML = `${accommodationsSummary}`;
-    document.querySelector(".changeover").textContent = `Changeover: ${changeover}`;
-    document.querySelector(".min-price").textContent = `${min_price_gbp}`;
-    document.querySelector(".villa-location").textContent = `${region}`;
-    document.querySelector(".price-notes").innerHTML = `${pricenotes}`;    
-    document.querySelector(".images").textContent = `Images: ${images}`;
-    document.querySelector(".cover").style.backgroundImage = `url(${cover})`;    
-    console.log('test', property);
-
-     // Check if the text content of the .villa-city element contains "CY" and replace it with "Cyprus" if it does
-const villaCity = document.querySelector(".villa-city");
-if (villaCity && villaCity.textContent.includes("CY")) {
-    villaCity.textContent = villaCity.textContent.replace("CY", "Cyprus");
-}
-        // Round up the min_price value to the nearest whole number
-const roundedMinPrice = Math.ceil(min_price_gbp);
-
-// Set the text for min-price with the rounded and formatted value
-document.querySelector(".min-price").textContent = `£${roundedMinPrice.toLocaleString()}`;
-    
-
-    // Check if amenities is not null or undefined before splitting
-    if (amenities) {
-        // Split the amenities string into an array using commas as the delimiter
-        const amenityCodes = amenities.split(',').map(amenity => amenity.trim());
-
-        // Map amenity codes to descriptions and images using the amenityMappings object
-        const amenityDetails = amenityCodes.map(code => {
-            const amenityMapping = amenityMappings[code];
-            return {
-                description: amenityMapping ? amenityMapping.description : code,
-                imageUrl: amenityMapping ? amenityMapping.imageUrl : "",
-            };
-        });
-
-        // Get the element with the class .amenities
-        const amenitiesContainer = document.querySelector('.amenities');
-
-        // Create an unordered list element
-        const amenitiesList = document.createElement('ul');
-
-        // Loop through the amenity details and create list items with images
-        amenityDetails.forEach((detail) => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<img src="${detail.imageUrl}" alt="${detail.description}" /> ${detail.description}`;
-            amenitiesList.appendChild(listItem);
-
-            // Add the amenity-block class to the list item
-            listItem.classList.add('amenity-block');
-        });
-
-        // Append the list to the .amenities container
-        amenitiesContainer.appendChild(amenitiesList);
-    }
-
-    document.querySelector(".property-type").textContent = `Property Type: ${propertyType}`;
-    document.querySelector(".accommodations-summary").textContent = `Accommodations Summary: ${accommodationsSummary}`;
-    document.querySelector(".data-map-lat").textContent = `${latitude}`;
-    document.querySelector(".data-map-lon").textContent = `${longitude}`;
-
-const imagesArray = images.split(',').map(url => url.trim()); // Trim URLs during split
-const mosaicContainer = document.querySelector(".villa-gallery-mosaic");
-
-imagesArray.forEach((image, index) => {
-    const imageElement = document.createElement("div");
-    imageElement.className = `mosaic-image column-${(index % 3) + 1}`;
-    imageElement.style.backgroundImage = `url('${image.trim()}')`;
-    mosaicContainer.appendChild(imageElement);
-    imageElement.addEventListener('click', function () { openLightbox(index); });
-});
-
-    // Setup Lightbox
-    var lightboxImage = document.getElementById("lightbox-img");
-    var lightbox = document.getElementById("lightbox");
-
-    document.getElementById('close').addEventListener('click', closeLightbox);
-    document.getElementById('next').addEventListener('click', nextImage);
-    document.getElementById('prev').addEventListener('click', prevImage);
-
-    function openLightbox(index) {
-        lightboxImage.src = imagesArray[index];
-        lightbox.style.display = 'flex';
-    }
-
-    function closeLightbox() {
-        lightbox.style.display = 'none';
-    }
-
-    function nextImage() {
-        const currentIndex = imagesArray.indexOf(lightboxImage.src.trim());
-        const newIndex = (currentIndex + 1) % imagesArray.length;
-        lightboxImage.src = imagesArray[newIndex];
-    }
-
-    function prevImage() {
-        const currentIndex = imagesArray.indexOf(lightboxImage.src.trim());
-        let newIndex = currentIndex - 1;
-        if (newIndex < 0) newIndex = imagesArray.length - 1;
-        lightboxImage.src = imagesArray[newIndex].trim();
-    }
-
-    const galleryGrid = document.querySelector('.gallery-grid');
-
-    // Check if imagesArray has at least 6 images
-    if (imagesArray.length >= 6) {
-        for (let i = 0; i < 6; i++) {
-            const imageElement = document.createElement('img');
-            imageElement.className = 'gallery-image';
-            imageElement.src = imagesArray[i];
-            galleryGrid.appendChild(imageElement);
-        }
-    } else {
-        console.log('Not enough images available for the gallery.');
-    }
-}
 
