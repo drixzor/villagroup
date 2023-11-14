@@ -36,7 +36,6 @@ async function fetchAndPopulatePropertyData(propertyId) {
         } else {
             console.log("Property not found.");
         }
-
     } catch (error) {
         console.error("Error:", error);
     }
