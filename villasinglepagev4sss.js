@@ -291,45 +291,12 @@ async function fetchPropertyData(propertyId) {
 
         if (matchingProperty) {
             populatePropertyDetails(matchingProperty);
-            
             // Update the data-calendar-property-id attribute with property ID for the widget
             var bookingWidget = document.getElementById('booking-widget-container');
             if (bookingWidget) {
                 bookingWidget.innerHTML = `<div data-calendar-key="306CF20FB9002DA05908D846CACD52D722130AB6F33ED392045C5EE6D0A371C5D639889CDCBFD28CD218A78ED8791E35" data-calendar-property-id="${matchingProperty.propertyId}">Your widget will appear here.</div>`;
             }
 
-            // Update title tag
-            document.title = `Luxury Holiday Villa ${propertyId} in ${matchingProperty.region}, ${matchingProperty.city}, Cyprus`;
-
-            // Update meta description
-            const metaDescriptionTag = document.querySelector('meta[name="description"]');
-            const truncatedDescription = matchingProperty.accommodationsSummary.length > 145
-                ? matchingProperty.accommodationsSummary.substring(0, 145) + '...'
-                : matchingProperty.accommodationsSummary;
-
-            if (metaDescriptionTag) {
-                metaDescriptionTag.setAttribute('content', truncatedDescription);
-            } else {
-                // If meta description tag doesn't exist, create and append it to the head
-                const newMetaTag = document.createElement('meta');
-                newMetaTag.name = 'description';
-                newMetaTag.content = truncatedDescription;
-                document.head.appendChild(newMetaTag);
-            }
-
-            // Update og:image meta tag with the URL of the first image
-            const ogImageTag = document.querySelector('meta[property="og:image"]');
-            const firstImageUrl = matchingProperty.images.length > 0 ? matchingProperty.images[0] : '';
-
-            if (ogImageTag) {
-                ogImageTag.setAttribute('content', firstImageUrl);
-            } else {
-                // If og:image meta tag doesn't exist, create and append it to the head
-                const newOgImageTag = document.createElement('meta');
-                newOgImageTag.property = 'og:image';
-                newOgImageTag.content = firstImageUrl;
-                document.head.appendChild(newOgImageTag);
-            }
         } else {
             console.log("Property not found.");
         }
