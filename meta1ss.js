@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("DOM content loaded");
+    
     const url = window.location.href;
     const urlParams = new URLSearchParams(url.split('?').pop());
     const propertyId = urlParams.get("id");
@@ -14,9 +16,11 @@ async function fetchAndPopulatePropertyData(propertyId) {
     const apiUrl = "https://spapi.weboscy.com/property?id=" + propertyId;
 
     try {
+        console.log("Fetching property data...");
         const matchingProperty = await fetchData(apiUrl);
 
         if (matchingProperty) {
+            console.log("Property data retrieved:", matchingProperty);
             populatePropertyDetails(matchingProperty);
             updateMetadata(matchingProperty);
         } else {
@@ -28,6 +32,8 @@ async function fetchAndPopulatePropertyData(propertyId) {
 }
 
 function updateMetadata(property) {
+    console.log("Updating metadata");
+
     const {
         propertyId,
         region,
@@ -64,4 +70,3 @@ function updateMetadata(property) {
     // Use the first image from the images array
     graphImage.content = images.split(',')[0].trim();
 }
-
