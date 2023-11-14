@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM content loaded");
-    
+
     const url = window.location.href;
     const urlParams = new URLSearchParams(url.split('?').pop());
     const propertyId = urlParams.get("id");
@@ -22,7 +22,10 @@ async function fetchAndPopulatePropertyData(propertyId) {
         if (matchingProperty) {
             console.log("Property data retrieved:", matchingProperty);
             populatePropertyDetails(matchingProperty);
-            updateMetadata(matchingProperty);
+            // Delay the execution of updateMetadata to ensure meta tags are added to the DOM
+            setTimeout(() => {
+                updateMetadata(matchingProperty);
+            }, 0);
         } else {
             console.log("Property not found.");
         }
