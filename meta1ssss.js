@@ -49,13 +49,11 @@ function updateMetadata(property) {
     // Update title tag
     document.title = `Luxury Holiday Villa ${propertyId} in ${region}, ${city}, ${country}`;
 
-    // Update meta description (truncate to 145 characters if needed)
+    // Update meta description (truncate to 145 characters if needed) and remove HTML tags
     const truncatedSummary = accommodationsSummary && accommodationsSummary.length > 145
         ? accommodationsSummary.substring(0, 142) + "..."
         : accommodationsSummary;
-
-    // Log the truncated summary
-    console.log("Truncated Summary:", truncatedSummary);
+    const truncatedSummaryWithoutHTML = truncatedSummary.replace(/<\/?[^>]+(>|$)/g, "");
 
     // Update or create meta description tag
     let metaDescription = document.head.querySelector('meta[name="description"]');
@@ -64,7 +62,7 @@ function updateMetadata(property) {
         metaDescription.name = "description";
         document.head.appendChild(metaDescription);
     }
-    metaDescription.content = truncatedSummary;
+    metaDescription.content = truncatedSummaryWithoutHTML;
 
     // Log the updated meta description
     console.log("Updated Meta Description:", metaDescription);
