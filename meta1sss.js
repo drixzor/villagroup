@@ -43,13 +43,19 @@ function updateMetadata(property) {
         images
     } = property;
 
+    // Log the fetched data
+    console.log("Fetched data:", property);
+
     // Update title tag
     document.title = `Luxury Holiday Villa ${propertyId} in ${region}, ${city}, ${country}`;
 
     // Update meta description (truncate to 145 characters if needed)
-    const truncatedSummary = accommodationsSummary.length > 145
+    const truncatedSummary = accommodationsSummary && accommodationsSummary.length > 145
         ? accommodationsSummary.substring(0, 142) + "..."
         : accommodationsSummary;
+
+    // Log the truncated summary
+    console.log("Truncated Summary:", truncatedSummary);
 
     // Update or create meta description tag
     let metaDescription = document.head.querySelector('meta[name="description"]');
@@ -60,6 +66,9 @@ function updateMetadata(property) {
     }
     metaDescription.content = truncatedSummary;
 
+    // Log the updated meta description
+    console.log("Updated Meta Description:", metaDescription);
+
     // Update or create graph image meta tag
     let graphImage = document.head.querySelector('meta[property="og:image"]');
     if (!graphImage) {
@@ -69,4 +78,6 @@ function updateMetadata(property) {
     }
     // Use the first image from the images array
     graphImage.content = images.split(',')[0].trim();
+    // Log the updated graph image
+    console.log("Updated Graph Image:", graphImage);
 }
