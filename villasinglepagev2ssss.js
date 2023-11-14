@@ -537,4 +537,5 @@ if (graphImage && imagesArray.length > 0) {
     ogUrlTag.setAttribute('property', 'og:url');
     ogUrlTag.content = window.location.href;
     headElement.appendChild(ogUrlTag);
+    }
 }
