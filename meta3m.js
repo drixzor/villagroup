@@ -49,20 +49,13 @@ function updateMetadata(property) {
         region,
         city,
         country,
-        accommodationsSummary,
-        images
     } = property;
 
     // Update title tag
     document.title = `Luxury Holiday Villa ${propertyId} in ${region}, ${city}, ${country}`;
 
-    // Update or create og:title tag
-    let ogTitle = document.head.querySelector('meta[property="og:title"]');
-    if (!ogTitle) {
-        ogTitle = document.createElement('meta');
-        ogTitle.property = "og:title";
-        document.head.appendChild(ogTitle);
-    }
+    // Update og:title tag directly
+    const ogTitle = document.head.querySelector('meta[property="og:title"]');
     ogTitle.content = `Luxury Holiday Villa ${propertyId} in ${region}, ${city}, ${country}`;
 
     // Log the updated metadata
