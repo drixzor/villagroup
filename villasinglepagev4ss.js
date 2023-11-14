@@ -299,7 +299,7 @@ async function fetchPropertyData(propertyId) {
             }
 
             // Update title tag
-            document.title = `Luxury Holiday Villa ${propertyId} in ${matchingProperty.region}, ${matchingProperty.city}, ${matchingProperty.country}`;
+            document.title = `Luxury Holiday Villa ${propertyId} in ${matchingProperty.region}, ${matchingProperty.city}, Cyprus`;
 
             // Update meta description
             const metaDescriptionTag = document.querySelector('meta[name="description"]');
