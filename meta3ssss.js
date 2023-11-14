@@ -52,7 +52,7 @@ function updateMetadata(property) {
     } = property;
 
     // Update title tag
-    document.getElementById('pageTitle').innerText = `Luxury Holiday Villa ${propertyId} in ${region}, ${city}, ${country}`;
+    document.getElementById('pageTitle').innerText = `Luxury Holiday Villa`;
 
     // Log the updated metadata
     console.log("Updated Metadata:", {
