@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+// Use a flag to check if updateMetadata has been called for the current property
+let metadataUpdated = false;
+
 async function fetchAndPopulatePropertyData(propertyId) {
     const apiUrl = "https://spapi.weboscy.com/property?id=" + propertyId;
 
@@ -21,11 +24,18 @@ async function fetchAndPopulatePropertyData(propertyId) {
 
         if (matchingProperty) {
             console.log("Property data retrieved:", matchingProperty);
-            populatePropertyDetails(matchingProperty);
-            // Delay the execution of updateMetadata to ensure meta tags are added to the DOM
-            setTimeout(() => {
-                updateMetadata(matchingProperty);
-            }, 0);
+
+            // Check if metadata has been updated for this property
+            if (!metadataUpdated) {
+                populatePropertyDetails(matchingProperty);
+                // Delay the execution of updateMetadata to ensure meta tags are added to the DOM
+                setTimeout(() => {
+                    updateMetadata(matchingProperty);
+                    metadataUpdated = true; // Set the flag to true after updating metadata
+                }, 0);
+            } else {
+                console.log("Metadata already updated for this property.");
+            }
         } else {
             console.log("Property not found.");
         }
