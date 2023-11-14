@@ -44,29 +44,24 @@ function updateMetadata(property) {
     const truncatedSummary = accommodationsSummary.length > 145
         ? accommodationsSummary.substring(0, 142) + "..."
         : accommodationsSummary;
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-        metaDescription.content = truncatedSummary;
-    } else {
-        // If meta description tag doesn't exist, create it
-        const newMeta = document.createElement('meta');
-        newMeta.name = "description";
-        newMeta.content = truncatedSummary;
-        document.head.appendChild(newMeta);
-    }
 
-    // Update graph image
-    const graphImage = document.querySelector('meta[property="og:image"]');
-    if (graphImage) {
-        // Use the first image from the images array
-        const firstImage = images.split(',')[0].trim();
-        graphImage.content = firstImage;
-    } else {
-        // If og:image tag doesn't exist, create it
-        const newGraphImage = document.createElement('meta');
-        newGraphImage.property = "og:image";
-        // Use the first image from the images array
-        newGraphImage.content = images.split(',')[0].trim();
-        document.head.appendChild(newGraphImage);
+    // Update or create meta description tag
+    let metaDescription = document.head.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+        metaDescription = document.createElement('meta');
+        metaDescription.name = "description";
+        document.head.appendChild(metaDescription);
     }
+    metaDescription.content = truncatedSummary;
+
+    // Update or create graph image meta tag
+    let graphImage = document.head.querySelector('meta[property="og:image"]');
+    if (!graphImage) {
+        graphImage = document.createElement('meta');
+        graphImage.property = "og:image";
+        document.head.appendChild(graphImage);
+    }
+    // Use the first image from the images array
+    graphImage.content = images.split(',')[0].trim();
+}
 }
