@@ -294,7 +294,7 @@ async function fetchPropertyData(propertyId) {
             // Update the data-calendar-property-id attribute with property ID for the widget
             var bookingWidget = document.getElementById('booking-widget-container');
             if (bookingWidget) {
-                bookingWidget.innerHTML = `<div data-calendar-key="306CF20FB9002DA05908D846CACD52D722130AB6F33ED392045C5EE6D0A371C5D639889CDCBFD28CD218A78ED8791E35" data-calendar-property-id="${matchingProperty.propertyId}">Your widget will appear here.</div>`;
+                bookingWidget.innerHTML = `<div data-calendar-key="3BD937D30A59969DBD5DC2DBE9CE5D8988562A4D396128C263CB461992B70B689D1D81545CF3056A3EFD7AA94EA8ABAC" data-calendar-property-id="${matchingProperty.propertyId}">Your widget will appear here.</div>`;
             }
 
         } else {
