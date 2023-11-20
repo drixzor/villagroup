@@ -290,12 +290,12 @@ async function fetchPropertyData(propertyId) {
         const matchingProperty = await fetchData(apiUrl);
 
         if (matchingProperty) {
-            populatePropertyDetails(matchingProperty);
-            // Update the data-calendar-property-id attribute with property ID for the widget
-            var bookingWidget = document.getElementById('booking-widget-container');
-            if (bookingWidget) {
-                bookingWidget.innerHTML = `<div data-calendar-key="3BD937D30A59969DBD5DC2DBE9CE5D8988562A4D396128C263CB461992B70B689D1D81545CF3056A3EFD7AA94EA8ABAC" data-calendar-property-id="${matchingProperty.propertyId}">Your widget will appear here.</div>`;
-            }
+    populatePropertyDetails(matchingProperty);
+    // Update the data-calendar-property-id attribute with property ID for the widget
+    var bookingWidget = document.getElementById('booking-widget-container');
+    if (bookingWidget) {
+        bookingWidget.innerHTML = `<div data-calendar-key="3BD937D30A59969DBD5DC2DBE9CE5D8988562A4D396128C263CB461992B70B689D1D81545CF3056A3EFD7AA94EA8ABAC" data-calendar-hidden-property-name="true" data-calendar-property-id="${matchingProperty.propertyId}">Your widget will appear here.</div> <script src="https://secure.supercontrol.co.uk/components/embed.js"></script>`;
+    }
 
         } else {
             console.log("Property not found.");
