@@ -487,9 +487,7 @@ imagesArray.forEach((image, index) => {
         lightboxImage.src = imagesArray[newIndex].trim();
     }
 
-    const galleryGrid = document.querySelector('.gallery-grid');
-
-    // ... (previous code)
+   const galleryGrid = document.querySelector('.gallery-grid');
 
 // Check if imagesArray has at least 6 images
 if (imagesArray.length >= 6) {
