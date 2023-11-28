@@ -295,7 +295,7 @@ async function fetchPropertyData(propertyId) {
             const city = urlParams.get("city");
 
             if (!country || !city) {
-                const updatedUrl = `/properties?${matchingProperty.country.toLowerCase()}-${matchingProperty.city.toLowerCase()}-holiday-villa?id=${propertyId}`;
+                const updatedUrl = `/properties?cyprus-${matchingProperty.city.toLowerCase()}-holiday-villa?id=${propertyId}`;
                 window.history.replaceState({}, document.title, updatedUrl);
             }
 
