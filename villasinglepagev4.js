@@ -492,17 +492,15 @@ imagesArray.forEach((image, index) => {
     // Check if imagesArray has at least 6 images
     if (imagesArray.length >= 6) {
         for (let i = 0; i < 6; i++) {
-            const imageElement = document.createElement('img');
+            const imageElement = document.createElement('div'); // Use a div instead of img
             imageElement.className = 'gallery-image';
-            imageElement.src = 'https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/656578185b55bff7eb031dc5_luxury-cyprus-villas-holidays.webp'; // Placeholder/fallback image
-            imageElement.alt = 'Fallback Image';
+            imageElement.style.backgroundImage = `url('https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/656578185b55bff7eb031dc5_luxury-cyprus-villas-holidays.webp')`; // Placeholder/fallback image
             galleryGrid.appendChild(imageElement);
 
             // Load the actual image
             const actualImage = new Image();
             actualImage.onload = function () {
-                imageElement.src = imagesArray[i];
-                imageElement.alt = 'Actual Image'; // Update alt attribute if needed
+                imageElement.style.backgroundImage = `url('${imagesArray[i]}')`;
             };
             actualImage.src = imagesArray[i];
         }
