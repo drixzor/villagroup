@@ -494,8 +494,17 @@ imagesArray.forEach((image, index) => {
         for (let i = 0; i < 6; i++) {
             const imageElement = document.createElement('img');
             imageElement.className = 'gallery-image';
-            imageElement.src = imagesArray[i];
+            imageElement.src = 'https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/656578185b55bff7eb031dc5_luxury-cyprus-villas-holidays.webp'; // Placeholder/fallback image
+            imageElement.alt = 'Fallback Image';
             galleryGrid.appendChild(imageElement);
+
+            // Load the actual image
+            const actualImage = new Image();
+            actualImage.onload = function () {
+                imageElement.src = imagesArray[i];
+                imageElement.alt = 'Actual Image'; // Update alt attribute if needed
+            };
+            actualImage.src = imagesArray[i];
         }
     } else {
         console.log('Not enough images available for the gallery.');
