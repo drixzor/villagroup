@@ -494,7 +494,7 @@ imagesArray.forEach((image, index) => {
         for (let i = 0; i < 6; i++) {
             const imageElement = document.createElement('div'); // Use a div instead of img
             imageElement.className = 'gallery-image';
-            imageElement.style.backgroundImage = `url('https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/656578185b55bff7eb031dc5_luxury-cyprus-villas-holidays.webp')`; // Placeholder/fallback image
+            imageElement.style.backgroundImage = `url('https://uploads-ssl.webflow.com/64c37e33e743d0c2d6b3fead/6566021e8f5319e39ff622db_200w.gif')`; // Placeholder/fallback image
             galleryGrid.appendChild(imageElement);
 
             // Load the actual image
