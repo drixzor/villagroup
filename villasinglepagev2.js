@@ -482,23 +482,15 @@ imagesArray.forEach((image, index) => {
 
     const galleryGrid = document.querySelector('.gallery-grid');
 
-// Check if imagesArray has at least 6 images
-if (imagesArray.length >= 6) {
-    for (let i = 0; i < 6; i++) {
-        const imageElement = document.createElement('img');
-        imageElement.className = 'gallery-image';
-
-        // Check if the image URL is available, otherwise, use the skeleton loading animation
-        if (imagesArray[i]) {
-            imageElement.src = imagesArray[i].trim();
-        } else {
-            imageElement.classList.add('skeleton-image');
+    // Check if imagesArray has at least 6 images
+    if (imagesArray.length >= 6) {
+        for (let i = 0; i < 6; i++) {
+            const imageElement = document.createElement('img');
+            imageElement.className = 'gallery-image';
+            imageElement.src = imagesArray[i];
+            galleryGrid.appendChild(imageElement);
         }
-
-        galleryGrid.appendChild(imageElement);
+    } else {
+        console.log('Not enough images available for the gallery.');
     }
-} else {
-    console.log('Not enough images available for the gallery.');
-}
-
 }
