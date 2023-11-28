@@ -400,51 +400,51 @@ const villaCity = document.querySelector(".villa-city");
 if (villaCity && villaCity.textContent.includes("CY")) {
     villaCity.textContent = villaCity.textContent.replace("CY", "Cyprus");
 }
-        // Round up the min_price value to the nearest whole number
+
+// Round up the min_price value to the nearest whole number
 const roundedMinPrice = Math.ceil(min_price_gbp);
 
 // Set the text for min-price with the rounded and formatted value
 document.querySelector(".min-price").textContent = `£${roundedMinPrice.toLocaleString()}`;
-    
 
-    // Check if amenities is not null or undefined before splitting
-    if (amenities) {
-        // Split the amenities string into an array using commas as the delimiter
-        const amenityCodes = amenities.split(',').map(amenity => amenity.trim());
+// Check if amenities is not null or undefined before splitting
+if (amenities) {
+    // Split the amenities string into an array using commas as the delimiter
+    const amenityCodes = amenities.split(',').map(amenity => amenity.trim());
 
-        // Map amenity codes to descriptions and images using the amenityMappings object
-        const amenityDetails = amenityCodes.map(code => {
-            const amenityMapping = amenityMappings[code];
-            return {
-                description: amenityMapping ? amenityMapping.description : code,
-                imageUrl: amenityMapping ? amenityMapping.imageUrl : "",
-            };
-        });
+    // Map amenity codes to descriptions and images using the amenityMappings object
+    const amenityDetails = amenityCodes.map(code => {
+        const amenityMapping = amenityMappings[code];
+        return {
+            description: amenityMapping ? amenityMapping.description : code,
+            imageUrl: amenityMapping ? amenityMapping.imageUrl : "",
+        };
+    });
 
-        // Get the element with the class .amenities
-        const amenitiesContainer = document.querySelector('.amenities');
+    // Get the element with the class .amenities
+    const amenitiesContainer = document.querySelector('.amenities');
 
-        // Create an unordered list element
-        const amenitiesList = document.createElement('ul');
+    // Create an unordered list element
+    const amenitiesList = document.createElement('ul');
 
-        // Loop through the amenity details and create list items with images
-        amenityDetails.forEach((detail) => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `<img src="${detail.imageUrl}" alt="${detail.description}" /> ${detail.description}`;
-            amenitiesList.appendChild(listItem);
+    // Loop through the amenity details and create list items with images
+    amenityDetails.forEach((detail) => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<img src="${detail.imageUrl}" alt="${detail.description}" /> ${detail.description}`;
+        amenitiesList.appendChild(listItem);
 
-            // Add the amenity-block class to the list item
-            listItem.classList.add('amenity-block');
-        });
+        // Add the amenity-block class to the list item
+        listItem.classList.add('amenity-block');
+    });
 
-        // Append the list to the .amenities container
-        amenitiesContainer.appendChild(amenitiesList);
-    }
+    // Append the list to the .amenities container
+    amenitiesContainer.appendChild(amenitiesList);
+}
 
-    document.querySelector(".property-type").textContent = `Property Type: ${propertyType}`;
-    document.querySelector(".accommodations-summary").textContent = `Accommodations Summary: ${accommodationsSummary}`;
-    document.querySelector(".data-map-lat").textContent = `${latitude}`;
-    document.querySelector(".data-map-lon").textContent = `${longitude}`;
+document.querySelector(".property-type").textContent = `Property Type: ${propertyType}`;
+document.querySelector(".accommodations-summary").textContent = `Accommodations Summary: ${accommodationsSummary}`;
+document.querySelector(".data-map-lat").textContent = `${latitude}`;
+document.querySelector(".data-map-lon").textContent = `${longitude}`;
 
 const imagesArray = images.split(',').map(url => url.trim()); // Trim URLs during split
 const mosaicContainer = document.querySelector(".villa-gallery-mosaic");
@@ -457,47 +457,46 @@ imagesArray.forEach((image, index) => {
     imageElement.addEventListener('click', function () { openLightbox(index); });
 });
 
-    // Setup Lightbox
-    var lightboxImage = document.getElementById("lightbox-img");
-    var lightbox = document.getElementById("lightbox");
+// Setup Lightbox
+var lightboxImage = document.getElementById("lightbox-img");
+var lightbox = document.getElementById("lightbox");
 
-    document.getElementById('close').addEventListener('click', closeLightbox);
-    document.getElementById('next').addEventListener('click', nextImage);
-    document.getElementById('prev').addEventListener('click', prevImage);
+document.getElementById('close').addEventListener('click', closeLightbox);
+document.getElementById('next').addEventListener('click', nextImage);
+document.getElementById('prev').addEventListener('click', prevImage);
 
-    function openLightbox(index) {
-        lightboxImage.src = imagesArray[index];
-        lightbox.style.display = 'flex';
+function openLightbox(index) {
+    lightboxImage.src = imagesArray[index];
+    lightbox.style.display = 'flex';
+}
+
+function closeLightbox() {
+    lightbox.style.display = 'none';
+}
+
+function nextImage() {
+    const currentIndex = imagesArray.indexOf(lightboxImage.src.trim());
+    const newIndex = (currentIndex + 1) % imagesArray.length;
+    lightboxImage.src = imagesArray[newIndex];
+}
+
+function prevImage() {
+    const currentIndex = imagesArray.indexOf(lightboxImage.src.trim());
+    let newIndex = currentIndex - 1;
+    if (newIndex < 0) newIndex = imagesArray.length - 1;
+    lightboxImage.src = imagesArray[newIndex].trim();
+}
+
+const galleryGrid = document.querySelector('.gallery-grid');
+
+// Check if imagesArray has at least 6 images
+if (imagesArray.length >= 6) {
+    for (let i = 0; i < 6; i++) {
+        const imageElement = document.createElement('img');
+        imageElement.className = 'gallery-image';
+        imageElement.src = imagesArray[i];
+        galleryGrid.appendChild(imageElement);
     }
-
-    function closeLightbox() {
-        lightbox.style.display = 'none';
-    }
-
-    function nextImage() {
-        const currentIndex = imagesArray.indexOf(lightboxImage.src.trim());
-        const newIndex = (currentIndex + 1) % imagesArray.length;
-        lightboxImage.src = imagesArray[newIndex];
-    }
-
-    function prevImage() {
-        const currentIndex = imagesArray.indexOf(lightboxImage.src.trim());
-        let newIndex = currentIndex - 1;
-        if (newIndex < 0) newIndex = imagesArray.length - 1;
-        lightboxImage.src = imagesArray[newIndex].trim();
-    }
-
-    const galleryGrid = document.querySelector('.gallery-grid');
-
-    // Check if imagesArray has at least 6 images
-    if (imagesArray.length >= 6) {
-        for (let i = 0; i < 6; i++) {
-            const imageElement = document.createElement('img');
-            imageElement.className = 'gallery-image';
-            imageElement.src = imagesArray[i];
-            galleryGrid.appendChild(imageElement);
-        }
-    } else {
-        console.log('Not enough images available for the gallery.');
-    }
+} else {
+    console.log('Not enough images available for the gallery.');
 }
