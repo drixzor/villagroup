@@ -489,15 +489,17 @@ imagesArray.forEach((image, index) => {
 
     const galleryGrid = document.querySelector('.gallery-grid');
 
-    // Check if imagesArray has at least 6 images
-    if (imagesArray.length >= 6) {
-        for (let i = 0; i < 6; i++) {
-            const imageElement = document.createElement('img');
-            imageElement.className = 'gallery-image';
-            imageElement.src = imagesArray[i];
-            galleryGrid.appendChild(imageElement);
-        }
-    } else {
-        console.log('Not enough images available for the gallery.');
+    // ... (previous code)
+
+// Check if imagesArray has at least 6 images
+if (imagesArray.length >= 6) {
+    for (let i = 0; i < 6; i++) {
+        const imageElement = document.createElement('img');
+        imageElement.className = 'gallery-image hero-skeleton'; // Add hero-skeleton class for the loading effect
+        imageElement.src = imagesArray[i];
+        galleryGrid.appendChild(imageElement);
     }
+} else {
+    console.log('Not enough images available for the gallery.');
+}
 }
