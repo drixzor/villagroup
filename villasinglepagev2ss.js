@@ -264,10 +264,10 @@
 // Function to convert amenity codes to text descriptions
 function convertAmenitiesToString(amenities) {
     if (!amenities) {
-        return "No amenities available"; // Handle the case when amenities are null or undefined
+        return "No amenities available";
     }
     const amenityCodes = amenities.split(',').map(code => code.trim());
-    const amenityDescriptions = amenityCodes.map(code => amenityMappings[code] ? amenityMappings[code].description : code); // Use the mapping or the code itself if not found
+    const amenityDescriptions = amenityCodes.map(code => amenityMappings[code] ? amenityMappings[code].description : code);
     return amenityDescriptions.join(', ');
 }
 
@@ -275,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const url = window.location.href;
     const urlParams = new URLSearchParams(url.split('?').pop());
     const propertyId = urlParams.get("id");
-    
+
     if (propertyId) {
         fetchPropertyData(propertyId);
     } else {
@@ -290,12 +290,22 @@ async function fetchPropertyData(propertyId) {
         const matchingProperty = await fetchData(apiUrl);
 
         if (matchingProperty) {
-    populatePropertyDetails(matchingProperty);
-    // Update the data-calendar-property-id attribute with property ID for the widget
-    var bookingWidget = document.getElementById('booking-widget-container');
-    if (bookingWidget) {
-        bookingWidget.innerHTML = `<div data-calendar-key="3BD937D30A59969DBD5DC2DBE9CE5D8988562A4D396128C263CB461992B70B689D1D81545CF3056A3EFD7AA94EA8ABAC" data-calendar-hidden-property-name="true" data-calendar-property-id="${matchingProperty.propertyId}">Your widget will appear here.</div> <script src="https://secure.supercontrol.co.uk/components/embed.js"></script>`;
-    }
+            const urlParams = new URLSearchParams(window.location.search);
+            const country = urlParams.get("country");
+            const city = urlParams.get("city");
+
+            if (!country || !city) {
+                const updatedUrl = `/properties?cyprus-${matchingProperty.city.toLowerCase()}-holiday-villa?id=${propertyId}`;
+                window.history.replaceState({}, document.title, updatedUrl);
+            }
+
+            populatePropertyDetails(matchingProperty);
+
+            // Insert the booking widget
+            var bookingWidget = document.getElementById('booking-widget-container');
+            if (bookingWidget) {
+                bookingWidget.innerHTML = `<div data-calendar-key="3BD937D30A59969DBD5DC2DBE9CE5D8988562A4D396128C263CB461992B70B689D1D81545CF3056A3EFD7AA94EA8ABAC" data-calendar-hidden-property-name="true" data-calendar-property-id="${matchingProperty.propertyId}">Your widget will appear here.</div> <script src="https://secure.supercontrol.co.uk/components/embed.js"></script>`;
+            }
 
         } else {
             console.log("Property not found.");
